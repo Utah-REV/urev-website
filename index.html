@@ -1,0 +1,208 @@
+---
+layout: null
+areas:
+  - Salt Lake City
+  - Provo
+  - Orem
+  - Lehi
+  - American Fork
+  - Pleasant Grove
+  - Alpine
+  - Draper
+  - Sandy
+  - Holladay
+  - Farmington
+  - Layton
+  - Ogden
+  - Huntsville
+  - Park City
+  - Heber City
+  - Spanish Fork
+  - Eagle Mountain
+---
+{%- comment -%}
+  PORTFOLIO PHOTOS
+  Every .jpg/.jpeg/.png/.webp inside /portfolio/ shows up automatically.
+  Subfolder names become the filter buttons (portfolio/interiors -> "Interiors").
+  Photos in /portfolio/featured/ are used as the big hero image instead.
+{%- endcomment -%}
+{%- assign img_exts = "jpg,jpeg,png,webp" | split: "," -%}
+{%- assign all_files = site.static_files | where_exp: "f", "f.path contains '/portfolio/'" | sort: "path" -%}
+{%- assign hero = nil -%}
+{%- assign cats = "" -%}
+{%- assign photo_count = 0 -%}
+{%- for f in all_files -%}
+  {%- assign ext = f.extname | downcase | remove: "." -%}
+  {%- unless img_exts contains ext -%}{%- continue -%}{%- endunless -%}
+  {%- assign parts = f.path | split: "/" -%}
+  {%- if parts.size > 3 -%}{%- assign cat = parts[2] | downcase -%}{%- else -%}{%- assign cat = "" -%}{%- endif -%}
+  {%- if cat == "featured" -%}
+    {%- if hero == nil -%}{%- assign hero = f.path -%}{%- endif -%}
+  {%- else -%}
+    {%- assign photo_count = photo_count | plus: 1 -%}
+    {%- if hero == nil and photo_count == 1 -%}{%- assign first_photo = f.path -%}{%- endif -%}
+    {%- if cat != "" -%}
+      {%- assign cat_token = "|" | append: cat | append: "|" -%}
+      {%- unless cats contains cat_token -%}{%- assign cats = cats | append: cat_token -%}{%- endunless -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- if hero == nil and first_photo -%}{%- assign hero = first_photo -%}{%- endif -%}
+{%- assign cat_list = cats | split: "|" -%}
+<!doctype html>
+<html lang="en">
+<head>
+{% include head.html og_image=hero %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "{{ site.brand_full }} (UREV)",
+  "alternateName": "UREV",
+  "description": {{ site.description | jsonify }},
+  "url": "{{ site.url }}",
+  "email": "{{ site.email }}",
+  {% if site.phone != "" %}"telephone": "{{ site.phone }}",{% endif %}
+  {% if hero %}"image": "{{ site.url }}{{ hero }}",{% endif %}
+  "address": { "@type": "PostalAddress", "addressLocality": "Pleasant Grove", "addressRegion": "UT", "addressCountry": "US" },
+  "areaServed": [{ "@type": "State", "name": "Utah" }{% for a in page.areas %}, { "@type": "City", "name": "{{ a }}, UT" }{% endfor %}],
+  "knowsAbout": ["Real estate photography", "Real estate video", "Drone photography", "Social media management"],
+  "sameAs": [{% if site.instagram != "" %}"https://instagram.com/{{ site.instagram }}", {% endif %}{% if site.facebook != "" %}"{{ site.facebook }}", {% endif %}"{{ site.sister_brand_url }}"]
+}
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="wordmark" href="{{ '/' | relative_url }}" aria-label="{{ site.brand }} home">
+    <span class="wordmark-mark" aria-hidden="true"></span>{{ site.brand }}
+  </a>
+  <nav aria-label="Main">
+    <a href="#portfolio">Portfolio</a>
+    <a href="#services">Services</a>
+    <a href="#areas">Areas</a>
+    <a class="nav-cta" href="#book">Book a shoot</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="hero{% unless hero %} hero--plain{% endunless %}">
+    {% if hero %}
+    <img class="hero-img" src="{{ hero | relative_url }}" alt="Utah home photographed by {{ site.brand }}" fetchpriority="high">
+    {% endif %}
+    <div class="hero-copy">
+      <p class="hero-brand">{{ site.brand_full }}</p>
+      <h1>Utah real estate photography, video, and social media.</h1>
+      <p class="hero-sub">Listing media for agents, brokerages, and builders. Interiors, exteriors, drone aerials, and the posts that keep your listings in front of buyers.</p>
+      <div class="hero-actions">
+        <a class="btn btn--glow" href="#book">Book a shoot</a>
+        <a class="btn btn--ghost" href="#portfolio">See the work</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio" class="portfolio" aria-labelledby="portfolio-h">
+    <div class="section-head">
+      <h2 id="portfolio-h">Recent listings</h2>
+      {% if cat_list.size > 1 %}
+      <div class="filters" role="group" aria-label="Filter photos">
+        <button type="button" class="chip is-active" data-filter="all" aria-pressed="true">All</button>
+        {% for c in cat_list %}{% if c != "" %}
+        <button type="button" class="chip" data-filter="{{ c }}" aria-pressed="false">{{ c | replace: "-", " " | capitalize }}</button>
+        {% endif %}{% endfor %}
+      </div>
+      {% endif %}
+    </div>
+
+    {% if photo_count > 0 %}
+    <div class="gallery" id="gallery">
+      {% for f in all_files %}
+        {%- assign ext = f.extname | downcase | remove: "." -%}
+        {%- unless img_exts contains ext -%}{%- continue -%}{%- endunless -%}
+        {%- assign parts = f.path | split: "/" -%}
+        {%- if parts.size > 3 -%}{%- assign cat = parts[2] | downcase -%}{%- else -%}{%- assign cat = "" -%}{%- endif -%}
+        {%- if cat == "featured" -%}{%- continue -%}{%- endif -%}
+        {%- assign label = f.basename | replace: "-", " " | replace: "_", " " -%}
+        <figure class="tile" data-cat="{{ cat }}">
+          <button type="button" class="tile-btn" data-full="{{ f.path | relative_url }}" aria-label="View larger: {{ label }}">
+            <img src="{{ f.path | relative_url }}" alt="{{ label | capitalize }}, Utah real estate photography by {{ site.brand }}" loading="lazy" decoding="async">
+          </button>
+        </figure>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="empty">New listings are being added. Email <a href="mailto:{{ site.email }}">{{ site.email }}</a> to see recent work.</p>
+    {% endif %}
+  </section>
+
+  <section id="services" class="services" aria-labelledby="services-h">
+    <h2 id="services-h">What we shoot and manage</h2>
+    <dl class="service-list">
+      <div>
+        <dt>Listing photography</dt>
+        <dd>Bright, true-to-life interior and exterior photos, edited and sized for the MLS, Zillow, and print.</dd>
+      </div>
+      <div>
+        <dt>Video tours and reels</dt>
+        <dd>4K walkthrough videos for the listing page, plus vertical reels cut for Instagram, TikTok, and Facebook.</dd>
+      </div>
+      <div>
+        <dt>Drone aerials</dt>
+        <dd>FAA Part 107 licensed aerial photos and video that show the lot, the neighborhood, and the views. Flown by our sister company, <a href="{{ site.sister_brand_url }}">{{ site.sister_brand_name }}</a>.</dd>
+      </div>
+      <div>
+        <dt>Social media management</dt>
+        <dd>We plan, edit, caption, and post your content every week, answer comments, and keep your page active between listings.</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="process" aria-labelledby="process-h">
+    <h2 id="process-h">How a shoot works</h2>
+    <ol class="steps">
+      <li><strong>Book</strong><span>Send the address, the date you want, and what the listing needs.</span></li>
+      <li><strong>Shoot</strong><span>We photograph and film the property inside, outside, and from the air.</span></li>
+      <li><strong>Deliver</strong><span>You get edited photos and video in a download link, ready to post.</span></li>
+    </ol>
+  </section>
+
+  <section id="areas" class="areas" aria-labelledby="areas-h">
+    <h2 id="areas-h">Real estate photography across Utah</h2>
+    <p>Based in Pleasant Grove and shooting along the Wasatch Front and beyond, including:</p>
+    <ul class="area-list">
+      {% for a in page.areas %}<li>{{ a }}</li>{% endfor %}
+    </ul>
+    <p class="areas-note">Outside this list? We travel anywhere in Utah.</p>
+  </section>
+
+  <section id="book" class="book" aria-labelledby="book-h">
+    <h2 id="book-h">Book a shoot</h2>
+    <p>Tell us the property address and your listing date, and we'll send back availability and a quote.</p>
+    <a class="btn btn--glow" href="mailto:{{ site.email }}?subject=Shoot%20request&amp;body=Property%20address%3A%0AListing%20date%3A%0AServices%20needed%20(photos%2C%20video%2C%20drone%2C%20social)%3A%0A">Email {{ site.email }}</a>
+    {% if site.phone != "" %}<p class="book-alt">Or call or text <a href="tel:{{ site.phone | remove: '-' | remove: ' ' }}">{{ site.phone }}</a></p>{% endif %}
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>&copy; {{ site.time | date: "%Y" }} {{ site.brand }}, {{ site.brand_full }}. Pleasant Grove, Utah.</p>
+  <p>
+    {% if site.instagram != "" %}<a href="https://instagram.com/{{ site.instagram }}">Instagram</a>{% endif %}
+    {% if site.facebook != "" %}<a href="{{ site.facebook }}">Facebook</a>{% endif %}
+    <a href="{{ site.sister_brand_url }}">Drone work by {{ site.sister_brand_name }}</a>
+  </p>
+</footer>
+
+<dialog class="lightbox" id="lightbox" aria-label="Photo viewer">
+  <img alt="">
+  <button type="button" class="lb-close" aria-label="Close">&times;</button>
+  <button type="button" class="lb-prev" aria-label="Previous photo">&#8249;</button>
+  <button type="button" class="lb-next" aria-label="Next photo">&#8250;</button>
+</dialog>
+
+<script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
+</body>
+</html>

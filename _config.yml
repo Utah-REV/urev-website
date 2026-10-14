@@ -1,0 +1,28 @@
+# ------------------------------------------------------------
+# UREV — Utah Real Estate Visuals
+# Edit the values below to update your contact info sitewide.
+# ------------------------------------------------------------
+
+title: "UREV | Utah Real Estate Photography, Video & Social Media"
+brand: "UREV"
+brand_full: "Utah Real Estate Visuals"
+description: "Utah real estate photography, video tours, drone aerials, and social media management for agents and brokerages. FAA Part 107 licensed. Serving Salt Lake, Utah County, Davis, Weber, and statewide."
+
+url: "https://utahrealestatevisuals.com"   # change if you use a different domain
+baseurl: ""
+
+email: "utahrev@gmail.com"
+phone: ""            # e.g. "801-555-1234" — leave blank to hide
+instagram: ""        # handle only, no @ — e.g. "urev.media"
+facebook: ""         # full URL, or leave blank
+sister_brand_name: "801 Aerial"
+sister_brand_url: "https://801aerial.com"
+
+plugins:
+  - jekyll-sitemap
+
+exclude:
+  - README.md
+  - SETUP-GUIDE.md
+  - Gemfile
+  - Gemfile.lock
