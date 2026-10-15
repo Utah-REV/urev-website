@@ -1,0 +1,5 @@
+<svg class="logo-mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+  <path d="M2 11V2h9M29 2h9v9M38 29v9h-9M11 38H2v-9" fill="none" stroke="currentColor" stroke-width="2.4"/>
+  <path d="M10 22 20 13l10 9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="miter"/>
+  <path d="M14 21v8h12v-8" fill="none" stroke="currentColor" stroke-width="2.4"/>
+</svg>

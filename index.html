@@ -70,13 +70,14 @@ layout: null
 </script>
 </head>
 <body>
+<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('fx');</script>
 
 <a class="skip" href="#main">Skip to content</a>
 
-<header class="site-header" id="top">
-  <a class="wordmark" href="{{ '/' | relative_url }}" aria-label="{{ site.brand_full }} home">
-    <span class="wordmark-mark" aria-hidden="true"></span>
-    <span class="wordmark-text">{{ site.brand }}<small>{{ site.brand_full }}</small></span>
+<header class="site-header">
+  <a class="brand" href="{{ '/' | relative_url }}" aria-label="{{ site.brand_full }} home">
+    {% include logo.svg %}
+    <span class="brand-text"><span class="brand-name">{{ site.brand }}</span><span class="brand-sub">{{ site.brand_full }}</span></span>
   </a>
   <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">
     <span class="menu-icon" aria-hidden="true"></span><span class="visually-hidden">Menu</span>
@@ -93,23 +94,30 @@ layout: null
 
 <main id="main">
 
-  <section class="hero">
-    <video class="hero-media" autoplay muted loop playsinline preload="auto" poster="{{ site.hero_poster | relative_url }}" aria-hidden="true">
-      <source src="{{ site.hero_video | relative_url }}" type="video/mp4">
-    </video>
-    <div class="hero-copy">
-      <h1>Utah real estate photography, video, and social media.</h1>
-      <p class="hero-sub">Listing photos, drone aerials, video tours, and a social media team for agents, brokerages, and builders across Utah.</p>
-      <div class="hero-actions">
-        <a class="btn btn--glow" href="#book">Book a shoot</a>
-        <a class="btn btn--ghost" href="#work">See recent listings</a>
+  <section class="intro" aria-labelledby="hero-h">
+    <div class="intro-pin">
+      <video class="intro-video" autoplay muted loop playsinline preload="auto" poster="{{ site.hero_poster | relative_url }}" aria-hidden="true">
+        <source src="{{ site.hero_video | relative_url }}" type="video/mp4">
+      </video>
+      <div class="intro-mask" aria-hidden="true">
+        <div class="mask-word"><span>U</span><span>R</span><span class="mask-e">E</span><span>V</span></div>
       </div>
+      <p class="intro-tag" aria-hidden="true">Utah Real Estate Visuals</p>
+      <div class="intro-hint" aria-hidden="true"><span></span></div>
+      <div class="intro-copy">
+        <h1 id="hero-h">Utah real estate photography, video, and social media.</h1>
+        <p class="intro-sub">Listing photos, drone aerials, video tours, and a social media team for agents, brokerages, and builders across Utah.</p>
+        <div class="intro-actions">
+          <a class="btn btn--gold" href="#book">Book a shoot</a>
+          <a class="btn btn--ghost" href="#work">See recent listings</a>
+        </div>
+      </div>
+      <ul class="proof" aria-label="Why agents book UREV">
+        <li><strong>{{ site.turnaround }}</strong><span>Edited and delivered</span></li>
+        <li><strong>FAA Part 107</strong><span>Licensed drone pilot</span></li>
+        <li><strong>All of Utah</strong><span>Based in Pleasant Grove</span></li>
+      </ul>
     </div>
-    <ul class="proof" aria-label="Why agents book UREV">
-      <li><strong>{{ site.turnaround }}</strong> delivery</li>
-      <li><strong>FAA Part 107</strong> licensed drone pilot</li>
-      <li><strong>All of Utah</strong> from Pleasant Grove</li>
-    </ul>
   </section>
 
   <section id="work" class="work" aria-labelledby="work-h">
@@ -135,10 +143,11 @@ layout: null
         {%- assign label = f.basename | split: "-" -%}{%- assign first_word = label | first -%}
         {%- assign size_t = first_word | plus: 0 -%}
         {%- if size_t > 0 or first_word == "00" -%}{%- assign label = label | shift -%}{%- endif -%}
-        {%- assign out = "" -%}{%- for w in label -%}{%- assign cw = w | capitalize -%}{%- if forloop.first -%}{%- assign out = cw -%}{%- else -%}{%- assign out = out | append: " " | append: cw -%}{%- endif -%}{%- endfor -%}{%- assign label = out | replace: " Utah", ", Utah" -%}
+        {%- assign out = "" -%}{%- for w in label -%}{%- assign cw = w | capitalize -%}{%- if w == "of" or w == "and" or w == "the" -%}{%- assign cw = w -%}{%- endif -%}{%- if forloop.first -%}{%- assign out = cw -%}{%- else -%}{%- assign out = out | append: " " | append: cw -%}{%- endif -%}{%- endfor -%}{%- assign label = out | replace: " Utah", ", Utah" -%}
         <figure class="tile" data-cat="{{ cat }}">
           <button type="button" class="tile-btn" data-full="{{ f.path | relative_url }}" aria-label="View larger: {{ label }}">
             <img src="{{ f.path | relative_url }}" alt="{{ label }}, photographed by {{ site.brand_full }}" loading="lazy" decoding="async">
+            <span class="tile-cap" aria-hidden="true">{{ label | remove: ", Utah" | remove: ", Utah County" }}</span>
           </button>
         </figure>
       {% endfor %}{% endfor %}
@@ -146,14 +155,13 @@ layout: null
     <button type="button" class="btn btn--line more-btn" hidden>Show all photos</button>
     {% endif %}
 
-    {% if tours.size > 0 or reels.size > 0 %}
+    {% if tours.size > 0 %}
     <div class="motion">
-      {% if tours.size > 0 %}
       <h3>Video tours</h3>
       <div class="tour-grid">
         {% for v in tours %}
           {%- assign poster = v.path | replace: ".mp4", ".jpg" -%}
-          {%- assign w_list = v.basename | split: "-" | shift -%}{%- assign out = "" -%}{%- for w in w_list -%}{%- assign cw = w | capitalize -%}{%- if forloop.first -%}{%- assign out = cw -%}{%- else -%}{%- assign out = out | append: " " | append: cw -%}{%- endif -%}{%- endfor -%}{%- assign name = out | replace: " Utah", ", Utah" -%}
+          {%- assign w_list = v.basename | split: "-" | shift -%}{%- assign out = "" -%}{%- for w in w_list -%}{%- assign cw = w | capitalize -%}{%- if w == "of" or w == "and" or w == "the" -%}{%- assign cw = w -%}{%- endif -%}{%- if forloop.first -%}{%- assign out = cw -%}{%- else -%}{%- assign out = out | append: " " | append: cw -%}{%- endif -%}{%- endfor -%}{%- assign name = out | replace: " Utah", ", Utah" -%}
           <button type="button" class="vid vid--wide" data-video="{{ v.path | relative_url }}" aria-label="Play video: {{ name }}">
             <img src="{{ poster | relative_url }}" alt="" loading="lazy">
             <span class="vid-play" aria-hidden="true"></span>
@@ -161,69 +169,77 @@ layout: null
           </button>
         {% endfor %}
       </div>
-      {% endif %}
-      {% if reels.size > 0 %}
-      <h3>Reels for social</h3>
-      <div class="reel-grid">
-        {% for v in reels %}
-          {%- assign poster = v.path | replace: ".mp4", ".jpg" -%}
-          {%- assign w_list = v.basename | split: "-" | shift -%}{%- assign out = "" -%}{%- for w in w_list -%}{%- assign cw = w | capitalize -%}{%- if forloop.first -%}{%- assign out = cw -%}{%- else -%}{%- assign out = out | append: " " | append: cw -%}{%- endif -%}{%- endfor -%}{%- assign name = out | replace: " Utah", ", Utah" -%}
-          <button type="button" class="vid vid--tall" data-video="{{ v.path | relative_url }}" aria-label="Play reel: {{ name }}">
-            <img src="{{ poster | relative_url }}" alt="" loading="lazy">
-            <span class="vid-play" aria-hidden="true"></span>
-          </button>
-        {% endfor %}
-      </div>
-      {% endif %}
     </div>
     {% endif %}
   </section>
 
-  <section id="services" class="services" aria-labelledby="services-h">
-    <h2 id="services-h">Everything a listing needs, from one team</h2>
-    <dl class="service-list">
-      <div>
-        <dt>Listing photography</dt>
-        <dd>Bright, true-to-color interior and exterior photos, edited and sized for the MLS, Zillow, and print.</dd>
-      </div>
-      <div>
-        <dt>Video tours and reels</dt>
-        <dd>Cinematic walkthroughs for the listing page, plus vertical reels cut for Instagram, TikTok, and Facebook.</dd>
-      </div>
-      <div>
-        <dt>Drone aerials</dt>
-        <dd>Aerial photos and video that show the lot, the neighborhood, and the mountain views, flown by our licensed sister company, <a href="{{ site.sister_brand_url }}">{{ site.sister_brand_name }}</a>.</dd>
-      </div>
-      <div>
-        <dt>Social media management</dt>
-        <dd>We plan, edit, caption, and post your content every week, answer comments, and keep your page active between listings.</dd>
-      </div>
-    </dl>
-  </section>
-
-  <section id="pricing" class="pricing" aria-labelledby="pricing-h">
-    <h2 id="pricing-h">Simple pricing</h2>
-    <p class="lede">Starting prices. Every home is different, so send the address for an exact quote.</p>
-    <div class="price-grid">
-      {% for p in site.data.pricing %}
-      <article class="price-card{% if p.featured %} is-featured{% endif %}">
-        {% if p.featured %}<p class="price-flag">Most booked</p>{% endif %}
-        <h3>{{ p.name }}</h3>
-        <p class="price"><span class="price-per">{{ p.per }}</span> {{ p.price }}</p>
-        <p class="price-sum">{{ p.summary }}</p>
-        <ul>{% for x in p.features %}<li>{{ x }}</li>{% endfor %}</ul>
-        <a class="btn {% if p.featured %}btn--glow{% else %}btn--line{% endif %}" href="#book" data-service="{{ p.name }}">{{ p.button }}</a>
-      </article>
+  {% if reels.size > 0 %}
+  <section class="reels" aria-labelledby="reels-h">
+    <div class="reels-head">
+      <h2 id="reels-h">Reels that keep your page moving</h2>
+      <p>Vertical edits cut for Instagram, TikTok, and Facebook. Part of every Full Listing Media shoot and every social media plan.</p>
+    </div>
+    <div class="reel-track">
+      {% for v in reels %}
+        {%- assign poster = v.path | replace: ".mp4", ".jpg" -%}
+        {%- assign w_list = v.basename | split: "-" | shift -%}{%- assign out = "" -%}{%- for w in w_list -%}{%- assign cw = w | capitalize -%}{%- if w == "of" or w == "and" or w == "the" -%}{%- assign cw = w -%}{%- endif -%}{%- if forloop.first -%}{%- assign out = cw -%}{%- else -%}{%- assign out = out | append: " " | append: cw -%}{%- endif -%}{%- endfor -%}
+        <button type="button" class="vid vid--tall" data-video="{{ v.path | relative_url }}" aria-label="Play reel: {{ out }}">
+          <img src="{{ poster | relative_url }}" alt="" loading="lazy">
+          <span class="vid-play" aria-hidden="true"></span>
+          <span class="vid-label">{{ out | remove: "Reel " }}</span>
+        </button>
       {% endfor %}
     </div>
   </section>
+  {% endif %}
 
-  <section class="process" aria-labelledby="process-h">
-    <h2 id="process-h">How a shoot works</h2>
-    <ol class="steps">
-      <li><strong>Book</strong><span>Send the address, the date you want, and what the listing needs.</span></li>
-      <li><strong>Shoot</strong><span>We photograph and film the home inside, outside, and from the air in one visit.</span></li>
-      <li><strong>Deliver</strong><span>Edited photos and video land in your inbox within {{ site.turnaround }}, ready to post.</span></li>
+  <section id="services" class="services" aria-labelledby="services-h">
+    <h2 id="services-h">Everything a listing needs, from one team</h2>
+    <ul class="svc">
+      <li data-img="/portfolio/interiors/01-open-kitchen-island-utah.jpg">
+        <img src="{{ '/portfolio/interiors/01-open-kitchen-island-utah.jpg' | relative_url }}" alt="" loading="lazy">
+        <h3>Listing photography</h3>
+        <p>Bright, true-to-color interior and exterior photos, edited and sized for the MLS, Zillow, and print.</p>
+      </li>
+      <li data-img="/videos/tours/01-custom-home-tour-alpine-utah.jpg">
+        <img src="{{ '/videos/tours/01-custom-home-tour-alpine-utah.jpg' | relative_url }}" alt="" loading="lazy">
+        <h3>Video tours and reels</h3>
+        <p>Cinematic walkthroughs for the listing page, plus vertical reels cut for Instagram, TikTok, and Facebook.</p>
+      </li>
+      <li data-img="/portfolio/aerial/01-luxury-home-aerial-alpine-utah.jpg">
+        <img src="{{ '/portfolio/aerial/01-luxury-home-aerial-alpine-utah.jpg' | relative_url }}" alt="" loading="lazy">
+        <h3>Drone aerials</h3>
+        <p>Aerial photos and video of the home, the lot, and the mountain views, flown by our licensed sister company, <a href="{{ site.sister_brand_url }}">{{ site.sister_brand_name }}</a>.</p>
+      </li>
+      <li data-img="/videos/reels/02-detached-garage-reel-peoa.jpg">
+        <img src="{{ '/videos/reels/02-detached-garage-reel-peoa.jpg' | relative_url }}" alt="" loading="lazy">
+        <h3>Social media management</h3>
+        <p>We plan, edit, caption, and post your content every week, answer comments, and keep your page active between listings.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="pricing" class="pricing" aria-labelledby="pricing-h">
+    <div class="pricing-head">
+      <h2 id="pricing-h">Simple pricing</h2>
+      <p>Starting prices. Every home is different, so send the address for an exact quote.</p>
+    </div>
+    <div class="price-grid">
+      {% for p in site.data.pricing %}
+      <article class="price-card{% if p.featured %} is-featured{% endif %}">
+        <h3>{{ p.name }}</h3>
+        {% if p.featured %}<p class="price-flag">Most booked</p>{% endif %}
+        <p class="price">{{ p.price }}<span>{{ p.per }}</span></p>
+        <p class="price-sum">{{ p.summary }}</p>
+        <ul>{% for x in p.features %}<li>{{ x }}</li>{% endfor %}</ul>
+        <a class="btn {% if p.featured %}btn--gold{% else %}btn--dark{% endif %}" href="#book" data-service="{{ p.name }}">{{ p.button }}</a>
+      </article>
+      {% endfor %}
+    </div>
+    <ol class="steps" aria-label="How a shoot works">
+      <li><strong>Book</strong><span>Send the address, the date, and what the listing needs.</span></li>
+      <li><strong>Shoot</strong><span>Inside, outside, and from the air, in one visit.</span></li>
+      <li><strong>Deliver</strong><span>Edited photos and video within {{ site.turnaround }}.</span></li>
     </ol>
   </section>
 
@@ -241,10 +257,12 @@ layout: null
   </section>
 
   <section class="about" aria-labelledby="about-h">
-    <h2 id="about-h">Run by a photographer, not a call center</h2>
+    <h2 id="about-h" class="visually-hidden">About UREV</h2>
+    <blockquote>
+      <p>You work directly with the person who shoots and edits your listing. No middlemen, no outsourcing.</p>
+    </blockquote>
     <div class="about-body">
       <p>UREV is owned and run by Owen Young, an FAA Part 107 licensed drone pilot and the founder of {{ site.sister_brand_name }}. After shooting aerials for builders and agents across Utah, he started UREV so clients could get every piece of listing media, and the social posts that sell it, from one person they trust.</p>
-      <p>You work directly with the person who shoots and edits your listing. No middlemen, no outsourcing.</p>
     </div>
   </section>
 
@@ -290,7 +308,7 @@ layout: null
       <label>Anything else?<textarea name="details" rows="4" placeholder="Square footage, listing date, access notes"></textarea></label>
       <input type="hidden" name="_subject" value="New UREV shoot request">
       <input type="text" name="_gotcha" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <button class="btn btn--glow" type="submit">Send request</button>
+      <button class="btn btn--gold" type="submit">Send request</button>
       <p class="form-status" role="status" aria-live="polite"></p>
     </form>
   </section>
@@ -298,14 +316,19 @@ layout: null
 </main>
 
 <footer class="site-footer">
-  <p>&copy; {{ site.time | date: "%Y" }} {{ site.brand_full }} ({{ site.brand }}). Pleasant Grove, Utah.</p>
-  <p class="footer-links">
-    {% if site.instagram != "" %}<a href="https://www.instagram.com/{{ site.instagram }}/">Instagram</a>{% endif %}
-    {% if site.facebook != "" %}<a href="{{ site.facebook }}">Facebook</a>{% endif %}
-    <a href="mailto:{{ site.email }}">{{ site.email }}</a>
-    <a href="{{ site.sister_brand_url }}">Drone work by {{ site.sister_brand_name }}</a>
-  </p>
+  <p class="footer-word" aria-hidden="true">UREV</p>
+  <div class="footer-row">
+    <p>&copy; {{ site.time | date: "%Y" }} {{ site.brand_full }}. Pleasant Grove, Utah.</p>
+    <p class="footer-links">
+      {% if site.instagram != "" %}<a href="https://www.instagram.com/{{ site.instagram }}/">Instagram</a>{% endif %}
+      {% if site.facebook != "" %}<a href="{{ site.facebook }}">Facebook</a>{% endif %}
+      <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+      <a href="{{ site.sister_brand_url }}">Drone work by {{ site.sister_brand_name }}</a>
+    </p>
+  </div>
 </footer>
+
+<div class="svc-preview" aria-hidden="true"><img alt=""></div>
 
 <dialog class="viewer" id="viewer" aria-label="Media viewer">
   <div class="viewer-stage"></div>

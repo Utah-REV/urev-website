@@ -17,9 +17,73 @@
   menuBtn.addEventListener('click', function () { setMenu(menuBtn.getAttribute('aria-expanded') !== 'true'); });
   $$('#site-nav a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
 
-  // Pause hero video for people who prefer reduced motion
-  var heroVid = $('.hero-media');
-  if (heroVid && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { heroVid.removeAttribute('autoplay'); heroVid.pause(); }
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var canHover = window.matchMedia('(hover: hover) and (min-width: 821px)').matches;
+
+  // Intro: footage plays inside the UREV letters, which zoom open as you scroll
+  var intro = $('.intro'), heroVid = $('.intro-video');
+  if (reduce && heroVid) { heroVid.removeAttribute('autoplay'); heroVid.pause(); }
+  if (intro && document.documentElement.classList.contains('fx')) {
+    var mask = $('.intro-mask', intro), word = $('.mask-word', intro), stem = $('.mask-e', intro);
+    var setOrigin = function () {
+      // Zoom into the thick vertical stem of the "E" so the screen opens onto footage
+      var w = word.getBoundingClientRect(), e = stem.getBoundingClientRect();
+      var x = (e.left - w.left) + e.width * 0.3, y = (e.top - w.top) + e.height * 0.5;
+      word.style.transformOrigin = x + 'px ' + y + 'px';
+    };
+    var ticking = false;
+    var update = function () {
+      ticking = false;
+      var r = intro.getBoundingClientRect(), span = intro.offsetHeight - window.innerHeight;
+      var p = Math.min(Math.max(-r.top / span, 0), 1);
+      var z = Math.min(p / 0.72, 1);
+      word.style.transform = 'scale(' + (1 + Math.pow(z, 2.4) * 110) + ')';
+      mask.style.opacity = p < 0.6 ? 1 : Math.max(0, 1 - (p - 0.6) / 0.14);
+      intro.classList.toggle('is-open', p > 0.68);
+    };
+    var onScrollIntro = function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+    var init = function () { word.style.transform = 'none'; setOrigin(); update(); };
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(init); else init();
+    window.addEventListener('scroll', onScrollIntro, { passive: true });
+    window.addEventListener('resize', init);
+  }
+
+  // Services: a photo preview follows the cursor on desktop
+  var preview = $('.svc-preview');
+  if (preview && canHover && !reduce) {
+    var pImg = $('img', preview), px = 0, py = 0, cx = 0, cy = 0, raf = null;
+    var follow = function () {
+      cx += (px - cx) * 0.18; cy += (py - cy) * 0.18;
+      preview.style.transform = 'translate(' + (cx + 28) + 'px,' + (cy - 120) + 'px)';
+      raf = Math.abs(px - cx) + Math.abs(py - cy) > 0.5 ? requestAnimationFrame(follow) : null;
+    };
+    $$('.svc li').forEach(function (li) {
+      li.addEventListener('mouseenter', function (e) {
+        pImg.src = li.getAttribute('data-img');
+        if (!preview.classList.contains('is-on')) { cx = px = e.clientX; cy = py = e.clientY; follow(); }
+        preview.classList.add('is-on');
+      });
+      li.addEventListener('mousemove', function (e) { px = e.clientX; py = e.clientY; if (!raf) raf = requestAnimationFrame(follow); });
+      li.addEventListener('mouseleave', function () { preview.classList.remove('is-on'); });
+    });
+  }
+
+  // Videos preview silently on hover (desktop)
+  if (canHover && !reduce) {
+    $$('.vid').forEach(function (b) {
+      var v = null;
+      b.addEventListener('mouseenter', function () {
+        v = document.createElement('video');
+        v.muted = true; v.loop = true; v.playsInline = true; v.preload = 'auto';
+        v.src = b.getAttribute('data-video');
+        v.style.opacity = '0';
+        v.addEventListener('playing', function () { v.style.opacity = '1'; });
+        b.insertBefore(v, b.firstChild.nextSibling);
+        v.play().catch(function () {});
+      });
+      b.addEventListener('mouseleave', function () { if (v) { v.pause(); v.remove(); v = null; } });
+    });
+  }
 
   // Portfolio: show the first 12 photos, then a "Show all" button
   var tiles = $$('.tile'), gallery = $('.gallery'), moreBtn = $('.more-btn'), LIMIT = 12;
