@@ -1,0 +1,35 @@
+# Pricing packages shown on the homepage.
+# Edit names, prices, and bullet points here. "featured: true" highlights a card.
+- name: Listing Photos
+  price: "$250"
+  per: "starting at"
+  summary: Interior and exterior photos for a standard listing, edited and ready for the MLS.
+  features:
+    - 25–40 edited interior and exterior photos
+    - Bright, true-to-color HDR editing
+    - MLS, Zillow, and print-ready sizes
+    - Delivered in 24–48 hours
+  button: Book photos
+
+- name: Full Listing Media
+  price: "$400"
+  per: "starting at"
+  featured: true
+  summary: Everything a listing needs to stand out, shot in one visit.
+  features:
+    - Everything in Listing Photos
+    - Drone aerial photos of the home and lot
+    - Cinematic video tour
+    - Vertical reel for Instagram and TikTok
+  button: Book full media
+
+- name: Social Media Management
+  price: "$1,000"
+  per: "per month"
+  summary: We run your page so you can focus on clients.
+  features:
+    - 3 feed posts and 2 Stories every week
+    - Editing, captions, and a content calendar
+    - Comment and message replies
+    - Monthly content day for non-listing posts
+  button: Ask about social

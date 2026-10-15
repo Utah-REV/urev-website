@@ -3,15 +3,22 @@
 <title>{% if page.title %}{{ page.title }} | {{ site.brand }}{% else %}{{ site.title }}{% endif %}</title>
 <meta name="description" content="{{ page.description | default: site.description }}">
 <link rel="canonical" href="{{ site.url }}{{ page.url | replace: 'index.html', '' }}">
+{% if site.google_site_verification != "" %}<meta name="google-site-verification" content="{{ site.google_site_verification }}">{% endif %}
 <link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml">
-<meta name="theme-color" content="#232A4D">
+<meta name="theme-color" content="#171C36">
 
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="{{ site.brand_full }}">
 <meta property="og:title" content="{{ site.title }}">
 <meta property="og:description" content="{{ site.description }}">
 <meta property="og:url" content="{{ site.url }}">
 {% if include.og_image %}<meta property="og:image" content="{{ site.url }}{{ include.og_image }}">{% endif %}
 <meta name="twitter:card" content="summary_large_image">
+
+{% if site.google_analytics_id != "" %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics_id }}"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','{{ site.google_analytics_id }}');</script>
+{% endif %}
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -1,0 +1,9 @@
+# Service areas, grouped by county. Each city becomes searchable text on the page.
+- county: Utah County
+  cities: [Pleasant Grove, Provo, Orem, Lehi, Alpine, American Fork, Saratoga Springs, Eagle Mountain, Spanish Fork, Highland]
+- county: Salt Lake County
+  cities: [Salt Lake City, Draper, Sandy, South Jordan, Herriman, Holladay, Cottonwood Heights, Murray, West Jordan, Millcreek]
+- county: Davis County
+  cities: [Farmington, Bountiful, Layton, Kaysville, Centerville, Syracuse]
+- county: Weber, Summit and Wasatch
+  cities: [Ogden, North Ogden, Huntsville, Park City, Heber City, Midway]
