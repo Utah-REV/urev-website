@@ -22,7 +22,11 @@ layout: null
   {%- assign tok = "|" | append: cat | append: "|" -%}
   {%- unless cats contains tok -%}{%- assign cats = cats | append: tok -%}{%- endunless -%}
 {%- endfor -%}
-{%- assign cat_list = cats | split: "|" -%}
+{%- assign ordered = "" -%}
+{%- for c in site.gallery_order -%}{%- assign tok = "|" | append: c | append: "|" -%}{%- if cats contains tok -%}{%- assign ordered = ordered | append: c | append: "|" -%}{%- endif -%}{%- endfor -%}
+{%- assign raw = cats | split: "|" -%}
+{%- for c in raw -%}{%- if c == "" -%}{%- continue -%}{%- endif -%}{%- unless site.gallery_order contains c -%}{%- assign ordered = ordered | append: c | append: "|" -%}{%- endunless -%}{%- endfor -%}
+{%- assign cat_list = ordered | split: "|" -%}
 {%- assign tel = site.phone | remove: "-" | remove: " " | remove: "(" | remove: ")" -%}
 <!doctype html>
 <html lang="en">
@@ -111,7 +115,7 @@ layout: null
   <section id="work" class="work" aria-labelledby="work-h">
     <div class="section-head">
       <h2 id="work-h">Recent listings</h2>
-      {% if cat_list.size > 2 %}
+      {% if cat_list.size > 1 %}
       <div class="filters" role="group" aria-label="Filter photos">
         <button type="button" class="chip is-active" data-filter="all" aria-pressed="true">All</button>
         {% for c in cat_list %}{% if c != "" %}
@@ -123,11 +127,11 @@ layout: null
 
     {% if photo_count > 0 %}
     <div class="gallery">
-      {% for f in photos %}
+      {% for gc in cat_list %}{% for f in photos %}
         {%- assign ext = f.extname | downcase | remove: "." -%}
         {%- unless img_exts contains ext -%}{%- continue -%}{%- endunless -%}
         {%- assign parts = f.path | split: "/" -%}{%- if parts.size > 3 -%}{%- assign cat = parts[2] | downcase -%}{%- else -%}{%- assign cat = "more" -%}{%- endif -%}
-        {%- if cat == "featured" -%}{%- continue -%}{%- endif -%}
+        {%- if cat != gc -%}{%- continue -%}{%- endif -%}
         {%- assign label = f.basename | split: "-" -%}{%- assign first_word = label | first -%}
         {%- assign size_t = first_word | plus: 0 -%}
         {%- if size_t > 0 or first_word == "00" -%}{%- assign label = label | shift -%}{%- endif -%}
@@ -137,8 +141,9 @@ layout: null
             <img src="{{ f.path | relative_url }}" alt="{{ label }}, photographed by {{ site.brand_full }}" loading="lazy" decoding="async">
           </button>
         </figure>
-      {% endfor %}
+      {% endfor %}{% endfor %}
     </div>
+    <button type="button" class="btn btn--line more-btn" hidden>Show all photos</button>
     {% endif %}
 
     {% if tours.size > 0 or reels.size > 0 %}
@@ -283,6 +288,7 @@ layout: null
         <label>Preferred date<input name="date" type="date"></label>
       </div>
       <label>Anything else?<textarea name="details" rows="4" placeholder="Square footage, listing date, access notes"></textarea></label>
+      <input type="hidden" name="_subject" value="New UREV shoot request">
       <input type="text" name="_gotcha" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
       <button class="btn btn--glow" type="submit">Send request</button>
       <p class="form-status" role="status" aria-live="polite"></p>

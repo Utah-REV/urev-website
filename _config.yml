@@ -22,11 +22,14 @@ turnaround: "24–48 hours"
 
 # Contact form: paste your Formspree form ID (the part after /f/), e.g. "xabcdefg".
 # Until this is filled in, the form opens an email to the address above instead.
-formspree_id: ""
+formspree_id: "mqpewlaa"
 
 # Google: paste these in when you set them up (step 7)
 google_analytics_id: ""          # e.g. "G-XXXXXXXXXX"
 google_site_verification: ""     # the content="..." code from Search Console
+
+# Order of photo filter buttons and gallery (folders not listed go last)
+gallery_order: [interiors, exteriors, aerial, land]
 
 # Hero video at the top of the page (poster image shows while it loads)
 hero_video: "/videos/hero.mp4"

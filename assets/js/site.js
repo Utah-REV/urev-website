@@ -21,8 +21,17 @@
   var heroVid = $('.hero-media');
   if (heroVid && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { heroVid.removeAttribute('autoplay'); heroVid.pause(); }
 
+  // Portfolio: show the first 12 photos, then a "Show all" button
+  var tiles = $$('.tile'), gallery = $('.gallery'), moreBtn = $('.more-btn'), LIMIT = 12;
+  function applyLimit() {
+    var shown = 0;
+    tiles.forEach(function (t) { t.classList.remove('is-extra'); if (!t.hidden) { shown++; if (shown > LIMIT) t.classList.add('is-extra'); } });
+    if (moreBtn) moreBtn.hidden = shown <= LIMIT || gallery.classList.contains('is-expanded');
+  }
+  if (moreBtn) moreBtn.addEventListener('click', function () { gallery.classList.add('is-expanded'); moreBtn.hidden = true; });
+  applyLimit();
+
   // Portfolio filters
-  var tiles = $$('.tile');
   $$('.chip').forEach(function (chip) {
     chip.addEventListener('click', function () {
       var f = chip.getAttribute('data-filter');
@@ -32,6 +41,7 @@
         c.setAttribute('aria-pressed', on ? 'true' : 'false');
       });
       tiles.forEach(function (t) { t.hidden = !(f === 'all' || t.getAttribute('data-cat') === f); });
+      applyLimit();
     });
   });
 
@@ -40,7 +50,7 @@
   if (viewer && typeof viewer.showModal === 'function') {
     var stage = $('.viewer-stage', viewer), prev = $('.v-prev', viewer), next = $('.v-next', viewer);
     var current = 0;
-    var visible = function () { return tiles.filter(function (t) { return !t.hidden; }); };
+    var visible = function () { return tiles.filter(function (t) { return !t.hidden && (gallery.classList.contains('is-expanded') || !t.classList.contains('is-extra')); }); };
 
     function showPhoto(i) {
       var list = visible(); if (!list.length) return;
