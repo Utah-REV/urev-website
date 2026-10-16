@@ -287,7 +287,7 @@ main > section { padding: clamp(88px, 12vw, 168px) var(--inset); }
 .about { background: var(--coal); display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem clamp(40px, 7vw, 120px); align-items: end; }
 .about blockquote { margin: 0; }
 .about blockquote p { margin: 0; font: 400 clamp(2rem, 4.2vw, 3.5rem)/1.12 var(--serif); letter-spacing: -.01em; }
-.about blockquote p::before { content: "\201C"; display: block; color: var(--gold); font-size: 2.4em; line-height: .8; height: .45em; font-variation-settings: "opsz" 96; font-weight: 700; }
+.about blockquote p::before { content: ""; display: block; width: 56px; height: 2px; background: var(--gold); margin-bottom: 1.6rem; }
 .about-body p { margin: 0; color: var(--mute); }
 
 /* ---------- FAQ ---------- */
@@ -477,3 +477,68 @@ main > section { padding: clamp(88px, 12vw, 168px) var(--inset); }
 }
 .area-grid a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--gold-line); transition: color .2s, border-color .2s; }
 .area-grid a:hover { color: var(--gold); border-color: var(--gold); }
+
+/* ======================================================
+   Phone layout refinements
+   ====================================================== */
+@media (max-width: 820px) {
+  main > section:not(.intro):not(.page-hero) { padding-top: 64px; padding-bottom: 64px; }
+  h2 { font-size: clamp(2rem, 8.5vw, 2.6rem); }
+  .section-head { margin-bottom: 20px; gap: 14px; }
+  .fx .intro { height: 230vh; }
+
+  /* Swipeable rows: filters, video tours, pricing */
+  .filters, .tour-grid, .price-grid {
+    display: grid; grid-auto-flow: column; overflow-x: auto; overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory; scrollbar-width: none;
+    margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); scroll-padding-inline: var(--gutter);
+  }
+  .filters::-webkit-scrollbar, .tour-grid::-webkit-scrollbar, .price-grid::-webkit-scrollbar, .reel-track::-webkit-scrollbar { display: none; }
+  .filters { grid-auto-columns: max-content; gap: 6px; }
+  .chip { padding: 10px 14px; }
+  .tour-grid { grid-template-columns: none; grid-auto-columns: 84%; gap: 8px; }
+  .tour-grid > *, .price-grid > * { scroll-snap-align: start; }
+
+  /* Gallery: two columns so it doesn't run for screens */
+  .gallery { grid-template-columns: 1fr 1fr; gap: 6px; }
+  .tile-btn { aspect-ratio: 4 / 3; }
+
+  .vid-label { left: 66px; bottom: 24px; font-size: .9rem; }
+  .vid-play { width: 38px; height: 38px; left: 16px; bottom: 16px; }
+  .vid-play::before { left: 15px; top: 12px; border-left-width: 11px; border-top-width: 7px; border-bottom-width: 7px; }
+  .vid--tall .vid-label { bottom: 64px; font-size: .85rem; }
+  .reel-track { grid-auto-columns: 44%; gap: 8px; scrollbar-width: none; }
+  .reels-head { margin-bottom: 24px; }
+
+  /* Pricing: swipe between cards, most-booked first */
+  .price-grid { grid-template-columns: none; grid-auto-columns: 86%; gap: 10px; max-width: none; border: 0; }
+  .price-card { border: 1px solid rgba(18,17,15,.14); }
+  .price-card + .price-card { border-top: 1px solid rgba(18,17,15,.14); border-left: 1px solid rgba(18,17,15,.14); }
+  .price-card.is-featured { order: -1; margin: 0; }
+  .price-flag { position: static; order: -1; margin-bottom: .6rem; }
+  .price { font-size: 2.8rem; }
+  .pricing-head { margin-bottom: 24px; }
+  .steps { margin-top: 48px; gap: 22px; }
+  .addons { margin-top: 36px; }
+
+  /* Areas: cities flow as compact lines instead of tall lists */
+  .area-grid { grid-template-columns: 1fr; gap: 22px; margin-top: 28px; }
+  .area-grid h3 { padding-bottom: 8px; margin-bottom: 10px; }
+  .area-grid ul { display: flex; flex-wrap: wrap; gap: .3rem 1rem; font-size: .98rem; }
+
+  .about { gap: 24px; }
+  .about blockquote p { font-size: 1.75rem; line-height: 1.18; }
+  .faq summary { font-size: 1.12rem; padding: 18px 40px 18px 0; }
+  .book h2 { font-size: 2.6rem; }
+  .contact { margin-top: 1.5rem; gap: .9rem; }
+  .book-form { gap: 10px; }
+  .book-form input, .book-form select, .book-form textarea { padding: 10px 0; }
+  .services h2 { margin-bottom: 28px; }
+  .svc li { padding: 20px 0; }
+  .motion { margin-top: 56px; }
+  .media-band h2 { margin-bottom: 22px; }
+}
+@media (max-width: 380px) {
+  .gallery { grid-template-columns: 1fr 1fr; }
+  .tour-grid { grid-auto-columns: 90%; }
+}

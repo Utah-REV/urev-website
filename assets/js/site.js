@@ -145,7 +145,7 @@
   }
 
   // Portfolio: show the first 12 photos, then a "Show all" button
-  var gallery = $('.gallery'), moreBtn = $('.more-btn'), LIMIT = 12;
+  var gallery = $('.gallery'), moreBtn = $('.more-btn'), LIMIT = window.innerWidth <= 820 ? 8 : 12;
 
   // Mix categories so the "All" view alternates between shoots instead of
   // running one property at a time: each folder's photos are spread evenly.
