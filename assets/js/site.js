@@ -55,7 +55,6 @@
       if (heroVid) heroVid.style.transform = '';
       var removed = before - intro.offsetHeight;
       if (y > 0) window.scrollTo(0, Math.max(0, y - removed));
-      try { sessionStorage.setItem('urev-intro-seen', '1'); } catch (e) {}
     };
     var update = function () {
       ticking = false;
