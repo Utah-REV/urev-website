@@ -24,28 +24,48 @@
   var intro = $('.intro'), heroVid = $('.intro-video');
   if (reduce && heroVid) { heroVid.removeAttribute('autoplay'); heroVid.pause(); }
   if (intro && document.documentElement.classList.contains('fx')) {
+    var root = document.documentElement;
     var mask = $('.intro-mask', intro), word = $('.mask-word', intro), stem = $('.mask-e', intro);
+    var done = false, ticking = false;
     var setOrigin = function () {
       // Zoom into the thick vertical stem of the "E" so the screen opens onto footage
       var w = word.getBoundingClientRect(), e = stem.getBoundingClientRect();
       var x = (e.left - w.left) + e.width * 0.3, y = (e.top - w.top) + e.height * 0.5;
       word.style.transformOrigin = x + 'px ' + y + 'px';
     };
-    var ticking = false;
+    // Once the letters have fully opened, the intro is removed for good: the tall scroll
+    // section collapses to a normal hero and the scroll position is shifted by the same
+    // amount, so nothing moves on screen and scrolling back up never replays it.
+    var finish = function () {
+      if (done) return;
+      done = true;
+      window.removeEventListener('scroll', onScrollIntro);
+      window.removeEventListener('resize', init);
+      var before = intro.offsetHeight, y = window.scrollY;
+      root.classList.remove('fx');
+      intro.classList.add('is-open');
+      var removed = before - intro.offsetHeight;
+      if (y > 0) window.scrollTo(0, Math.max(0, y - removed));
+      try { sessionStorage.setItem('urev-intro-seen', '1'); } catch (e) {}
+    };
     var update = function () {
       ticking = false;
+      if (done) return;
       var r = intro.getBoundingClientRect(), span = intro.offsetHeight - window.innerHeight;
       var p = Math.min(Math.max(-r.top / span, 0), 1);
       var z = Math.min(p / 0.72, 1);
       word.style.transform = 'scale(' + (1 + Math.pow(z, 2.4) * 110) + ')';
       mask.style.opacity = p < 0.6 ? 1 : Math.max(0, 1 - (p - 0.6) / 0.14);
       intro.classList.toggle('is-open', p > 0.68);
+      if (p >= 1) finish();
     };
     var onScrollIntro = function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
-    var init = function () { word.style.transform = 'none'; setOrigin(); update(); };
+    var init = function () { if (done) return; word.style.transform = 'none'; setOrigin(); update(); };
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(init); else init();
     window.addEventListener('scroll', onScrollIntro, { passive: true });
     window.addEventListener('resize', init);
+    // Jumping straight to a section (menu links, back button) skips the intro
+    $$('a[href*="#"]').forEach(function (a) { a.addEventListener('click', function () { if (!done && a.hash && a.hash !== '#main') finish(); }); });
   }
 
   // Mobile quick-contact bar appears after the first screen, hides over the booking form

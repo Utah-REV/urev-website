@@ -78,7 +78,11 @@ main > section { padding: clamp(88px, 12vw, 168px) var(--inset); }
 }
 .site-header.is-solid { background: rgba(0,0,0,.86); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); padding-block: 12px; border-bottom-color: rgba(201,168,76,.18); }
 .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: var(--gold); position: relative; z-index: 2; }
-.logo-mark { width: 34px; height: 34px; flex: none; }
+.logo-full { height: 44px; width: auto; display: block; }
+.logo-m, .logo-t { fill: var(--gold); }
+.logo-w { fill: var(--text); }
+.site-header.is-solid .logo-full { height: 38px; }
+.logo-full { transition: height .35s var(--ease); }
 .brand-text { display: grid; line-height: 1; }
 .brand-name { font: 600 1.45rem/1 var(--serif); letter-spacing: .12em; color: var(--text); }
 .brand-sub { font: 500 .62rem/1 var(--sans); letter-spacing: .06em; color: var(--gold); margin-top: 5px; }
@@ -132,8 +136,7 @@ main > section { padding: clamp(88px, 12vw, 168px) var(--inset); }
 }
 .fx .mask-word {
   display: flex; color: #fff;
-  font: 900 min(26vw, 48vh)/.8 var(--serif); letter-spacing: .01em;
-  font-variation-settings: "opsz" 28;
+  font: 900 min(23vw, 44vh)/.8 "Cinzel", var(--serif); letter-spacing: .07em; margin-right: -.07em;
   transform-origin: 50% 50%; will-change: transform;
   padding-bottom: .04em;
 }
@@ -321,11 +324,7 @@ main > section { padding: clamp(88px, 12vw, 168px) var(--inset); }
 
 /* ---------- Footer ---------- */
 .site-footer { padding: clamp(56px, 8vw, 96px) var(--inset) 28px; overflow: hidden; }
-.footer-word {
-  margin: 0 0 clamp(24px, 4vw, 48px); text-align: center; user-select: none;
-  font: 900 min(28vw, 480px)/.78 var(--serif); letter-spacing: .01em; font-variation-settings: "opsz" 28;
-  color: transparent; -webkit-text-stroke: 1px rgba(201,168,76,.55);
-}
+.footer-word { display: block; width: min(100%, 1100px); height: auto; margin: 0 auto clamp(24px, 4vw, 48px); fill: rgba(201,168,76,.14); }
 .footer-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .75rem 2rem; padding-top: 22px; border-top: 1px solid rgba(201,168,76,.18); color: var(--mute); font-size: .9rem; }
 .footer-row p { margin: 0; }
 .footer-links { display: flex; flex-wrap: wrap; gap: 1.5rem; }
@@ -371,6 +370,7 @@ main > section { padding: clamp(88px, 12vw, 168px) var(--inset); }
   .v-prev, .v-next { top: auto; bottom: 20px; transform: none; }
 }
 @media (max-width: 520px) {
+  .logo-full { height: 36px; }
   .field-row { grid-template-columns: 1fr; }
   .area-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
   .brand-sub { display: none; }
