@@ -20,20 +20,28 @@
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var canHover = window.matchMedia('(hover: hover) and (min-width: 821px)').matches;
 
-  // Intro: footage plays inside the UREV letters, which zoom open as you scroll
+  // Intro: the logo draws itself, footage plays inside the ridge and the UREV letters,
+  // and scrolling flies the camera into the main peak until the video fills the screen.
   var intro = $('.intro'), heroVid = $('.intro-video');
   if (reduce && heroVid) { heroVid.removeAttribute('autoplay'); heroVid.pause(); }
   if (intro && document.documentElement.classList.contains('fx')) {
     var root = document.documentElement;
-    var mask = $('.intro-mask', intro), word = $('.mask-word', intro), stem = $('.mask-e', intro);
-    var done = false, ticking = false;
+    var mask = $('.intro-mask', intro), mSvg = $('.lockup--mask', intro), oSvg = $('.lockup--over', intro);
+    var letters = $('.lk-letters', intro), tag = $('.lk-tag', intro), outline = $('.lk-outline', intro);
+    var done = false, ticking = false, settled = false;
+    var clamp = function (v) { return Math.min(Math.max(v, 0), 1); };
+    // A point inside the thickest part of the main peak (logo viewBox is 1000 x 637)
+    var PEAK_X = 531.8 / 1000, PEAK_Y = 90.3 / 637;
     var setOrigin = function () {
-      // Zoom into the thick vertical stem of the "E" so the screen opens onto footage
-      var w = word.getBoundingClientRect(), e = stem.getBoundingClientRect();
-      var x = (e.left - w.left) + e.width * 0.3, y = (e.top - w.top) + e.height * 0.5;
-      word.style.transformOrigin = x + 'px ' + y + 'px';
+      var o = (PEAK_X * 100) + '% ' + (PEAK_Y * 100) + '%';
+      mSvg.style.transformOrigin = o; oSvg.style.transformOrigin = o;
     };
-    // Once the letters have fully opened, the intro is removed for good: the tall scroll
+    // Snap the load animation to its end state so scroll can take over
+    var settle = function () { if (!settled) { settled = true; intro.classList.add('lk-done'); } };
+    tag.addEventListener('animationend', settle);
+    setTimeout(settle, 3400);
+
+    // Once the peak has fully opened, the intro is removed for good: the tall scroll
     // section collapses to a normal hero and the scroll position is shifted by the same
     // amount, so nothing moves on screen and scrolling back up never replays it.
     var finish = function () {
@@ -44,6 +52,7 @@
       var before = intro.offsetHeight, y = window.scrollY;
       root.classList.remove('fx');
       intro.classList.add('is-open');
+      if (heroVid) heroVid.style.transform = '';
       var removed = before - intro.offsetHeight;
       if (y > 0) window.scrollTo(0, Math.max(0, y - removed));
       try { sessionStorage.setItem('urev-intro-seen', '1'); } catch (e) {}
@@ -52,16 +61,24 @@
       ticking = false;
       if (done) return;
       var r = intro.getBoundingClientRect(), span = intro.offsetHeight - window.innerHeight;
-      var p = Math.min(Math.max(-r.top / span, 0), 1);
-      var z = Math.min(p / 0.72, 1);
-      word.style.transform = 'scale(' + (1 + Math.pow(z, 2.4) * 110) + ')';
-      mask.style.opacity = p < 0.6 ? 1 : Math.max(0, 1 - (p - 0.6) / 0.14);
-      intro.classList.toggle('is-open', p > 0.68);
+      var p = clamp(-r.top / span);
+      if (p > 0) settle();
+      var z = clamp(p / 0.72);
+      var sc = 'scale(' + (1 + Math.pow(z, 2.5) * 60) + ')';
+      mSvg.style.transform = sc; oSvg.style.transform = sc;
+      if (settled) {
+        letters.style.opacity = 1 - clamp((p - 0.04) / 0.22);
+        tag.style.opacity = 1 - clamp(p / 0.12);
+        outline.style.opacity = 1 - clamp((p - 0.08) / 0.3);
+      }
+      if (heroVid) heroVid.style.transform = 'scale(' + (1.18 - 0.18 * z) + ')';
+      mask.style.opacity = p < 0.55 ? 1 : Math.max(0, 1 - (p - 0.55) / 0.15);
+      intro.classList.toggle('is-open', p > 0.66);
       if (p >= 1) finish();
     };
     var onScrollIntro = function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
-    var init = function () { if (done) return; word.style.transform = 'none'; setOrigin(); update(); };
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(init); else init();
+    var init = function () { if (done) return; setOrigin(); update(); };
+    init();
     window.addEventListener('scroll', onScrollIntro, { passive: true });
     window.addEventListener('resize', init);
     // Jumping straight to a section (menu links, back button) skips the intro

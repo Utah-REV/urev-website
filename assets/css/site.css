@@ -100,11 +100,12 @@ main > section { padding: clamp(88px, 12vw, 168px) var(--inset); }
 .menu-btn[aria-expanded="true"] .menu-icon::after { transform: translateY(-7px) rotate(-45deg); }
 
 /* ---------- Intro (signature moment) ----------
-   Default (no JS / reduced motion): full video with headline.
-   With JS: footage plays inside giant UREV letters, then zooms to full frame on scroll. */
+   Default (no JS / reduced motion / already seen): full video with headline.
+   With .fx: the logo appears first. The ridge draws itself in gold, footage fills
+   the ridge and the UREV letters, and scrolling flies into the main peak. */
 .intro { position: relative; padding: 0 !important; }
 .intro-pin { position: relative; height: 100svh; min-height: 620px; overflow: hidden; isolation: isolate; display: grid; align-content: end; }
-.intro-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -3; }
+.intro-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -3; transform-origin: 50% 40%; }
 .intro-pin::before {
   content: ""; position: absolute; inset: 0; z-index: -2; pointer-events: none;
   background:
@@ -112,9 +113,9 @@ main > section { padding: clamp(88px, 12vw, 168px) var(--inset); }
     linear-gradient(90deg, rgba(0,0,0,.7) 0%, rgba(0,0,0,.25) 55%, rgba(0,0,0,0) 80%),
     linear-gradient(0deg, rgba(0,0,0,.9) 0%, rgba(0,0,0,.35) 40%, rgba(0,0,0,0) 65%);
 }
-.intro-mask, .intro-tag, .intro-hint { display: none; }
+.intro-mask, .intro-over, .intro-hint { display: none; }
 .intro-copy { padding: 0 var(--inset); position: relative; }
-.intro h1 { font-size: clamp(2.5rem, 6vw, 5.2rem); line-height: 1.02; max-width: 14ch; font-weight: 600; text-wrap: balance; }
+.intro h1 { font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1.02; max-width: 14ch; font-weight: 600; text-wrap: balance; }
 .intro-sub { max-width: 50ch; margin: 1.4rem 0 2rem; font-size: clamp(1.05rem, 1.5vw, 1.2rem); color: rgba(243,238,228,.86); }
 .intro-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 .proof {
@@ -126,32 +127,34 @@ main > section { padding: clamp(88px, 12vw, 168px) var(--inset); }
 .proof strong { font: 500 1.35rem/1.1 var(--serif); color: var(--gold); }
 .proof span { font-size: .9rem; color: var(--mute); }
 
-.fx .intro { height: 260vh; }
+.fx .intro { height: 280vh; }
 .fx .intro-pin { position: sticky; top: 0; }
-.fx .intro-mask {
-  display: grid; place-items: center;
-  position: absolute; inset: 0; z-index: 3;
-  background: var(--black); mix-blend-mode: multiply;
-  will-change: opacity;
+.fx .intro-mask, .fx .intro-over {
+  display: grid; place-items: center; position: absolute; inset: 0; pointer-events: none;
 }
-.fx .mask-word {
-  display: flex; color: #fff;
-  font: 900 min(23vw, 44vh)/.8 "Cinzel", var(--serif); letter-spacing: .07em; margin-right: -.07em;
-  transform-origin: 50% 50%; will-change: transform;
-  padding-bottom: .04em;
-}
-.fx .intro-tag {
-  display: block; position: absolute; z-index: 4; left: 0; right: 0; bottom: 18vh; margin: 0;
-  text-align: center; color: var(--gold); font: 500 clamp(.9rem, 1.6vw, 1.15rem)/1 var(--sans); letter-spacing: .3em;
-}
-.fx .intro-hint { display: block; position: absolute; z-index: 4; left: 50%; bottom: 6vh; width: 1px; height: 52px; background: rgba(201,168,76,.25); overflow: hidden; }
+.fx .intro-mask { z-index: 3; background: var(--black); mix-blend-mode: multiply; will-change: opacity; }
+.fx .intro-over { z-index: 4; }
+.lockup { width: min(76vw, 860px, 104vh); height: auto; overflow: visible; will-change: transform; }
+
+/* Load sequence */
+.fx .lk-outline { fill: none; stroke: var(--gold); stroke-width: 2; vector-effect: non-scaling-stroke; stroke-linejoin: miter;
+  stroke-dasharray: 1; stroke-dashoffset: 1; animation: lk-draw 1.6s var(--ease) .25s forwards; }
+.fx .lk-mark { opacity: 0; animation: lk-fade 1s ease 1.35s forwards; }
+.fx .lk-letters { opacity: 0; transform: translateY(40px); transform-box: fill-box; animation: lk-rise 1.1s var(--ease) 1.6s forwards; }
+.fx .lk-tag { opacity: 0; transform: translateY(18px); transform-box: fill-box; animation: lk-rise 1s var(--ease) 2.05s forwards; }
+/* After the load animation, scroll controls these directly */
+.lk-done .lk-outline, .lk-done .lk-mark, .lk-done .lk-letters, .lk-done .lk-tag { animation: none; opacity: 1; transform: none; stroke-dashoffset: 0; }
+@keyframes lk-draw { to { stroke-dashoffset: 0; } }
+@keyframes lk-fade { to { opacity: 1; } }
+@keyframes lk-rise { to { opacity: 1; transform: none; } }
+
+.fx .intro-hint { display: block; position: absolute; z-index: 5; left: 50%; bottom: 5vh; width: 1px; height: 52px; background: rgba(201,168,76,.25); overflow: hidden; opacity: 0; animation: lk-fade .8s ease 2.6s forwards; }
 .fx .intro-hint span { position: absolute; left: 0; top: -40%; width: 1px; height: 40%; background: var(--gold); animation: hint 2.2s var(--ease) infinite; }
 @keyframes hint { to { top: 100%; } }
 .fx .intro-copy, .fx .proof { opacity: 0; transform: translateY(24px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
 .fx .intro.is-open .intro-copy, .fx .intro.is-open .proof { opacity: 1; transform: none; }
 .fx .intro.is-open .proof { transition-delay: .12s; }
-.fx .intro.is-open .intro-tag, .fx .intro.is-open .intro-hint { opacity: 0; }
-.fx .intro-tag, .fx .intro-hint { transition: opacity .4s; }
+.fx .intro.is-open .intro-hint { opacity: 0 !important; transition: opacity .3s; }
 
 /* ---------- Work ---------- */
 .section-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 1.5rem 2rem; margin-bottom: clamp(32px, 4vw, 52px); }
@@ -371,6 +374,8 @@ main > section { padding: clamp(88px, 12vw, 168px) var(--inset); }
 }
 @media (max-width: 520px) {
   .logo-full { height: 36px; }
+  .lockup { width: 88vw; }
+  .intro h1, .page-hero h1 { font-size: 2.25rem; }
   .field-row { grid-template-columns: 1fr; }
   .area-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
   .brand-sub { display: none; }
