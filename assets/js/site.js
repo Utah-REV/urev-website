@@ -80,9 +80,21 @@
     init();
     window.addEventListener('scroll', onScrollIntro, { passive: true });
     window.addEventListener('resize', init);
-    // Jumping straight to a section (menu links, back button) skips the intro
-    $$('a[href*="#"]').forEach(function (a) { a.addEventListener('click', function () { if (!done && a.hash && a.hash !== '#main') finish(); }); });
+    window.urevFinishIntro = finish;
   }
+
+  // Links to sections on this page scroll there without adding "#work" etc. to the
+  // address, so a reload always starts at the top (and replays the intro).
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href*="#"]');
+    if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    if (a.pathname !== location.pathname || a.host !== location.host || !a.hash || a.hash === '#main') return;
+    var target = document.getElementById(a.hash.slice(1));
+    if (!target) return;
+    e.preventDefault();
+    if (window.urevFinishIntro) window.urevFinishIntro();
+    target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  });
 
   // Mobile quick-contact bar appears after the first screen, hides over the booking form
   var quick = $('.quick-bar'), bookSec = $('#book');
