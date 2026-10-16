@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+{% include head.html og_image=page.hero %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}/" },
+    {% if page.layout == "city" %}{ "@type": "ListItem", "position": 2, "name": "Areas", "item": "{{ site.url }}/#areas" },{% else %}{ "@type": "ListItem", "position": 2, "name": "Services", "item": "{{ site.url }}/services/" },{% endif %}
+    { "@type": "ListItem", "position": 3, "name": {{ page.h1 | jsonify }}, "item": "{{ site.url }}{{ page.url }}" }
+  ]
+}
+</script>
+{% if page.faq %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{% for x in page.faq %}{% unless forloop.first %},{% endunless %}
+    { "@type": "Question", "name": {{ x.q | jsonify }}, "acceptedAnswer": { "@type": "Answer", "text": {{ x.a | jsonify }} } }{% endfor %}
+  ]
+}
+</script>
+{% endif %}
+{{ page.extra_schema }}
+</head>
+<body class="inner">
+
+{% include header.html %}
+
+<main id="main">
+  <section class="page-hero"{% if page.hero %} style="--hero: url('{{ page.hero | relative_url }}')"{% endif %}>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="{{ '/' | relative_url }}">Home</a>
+      {% if page.layout == "city" %}<a href="{{ '/' | relative_url }}#areas">Areas</a>{% else %}<a href="{{ '/services/' | relative_url }}">Services</a>{% endif %}
+    </nav>
+    <h1>{{ page.h1 }}</h1>
+    <p class="page-lede">{{ page.lede }}</p>
+    <div class="intro-actions">
+      <a class="btn btn--gold" href="#book">Book a shoot</a>
+      <a class="btn btn--ghost" href="{{ '/' | relative_url }}#work">See recent listings</a>
+    </div>
+  </section>
+
+  {{ content }}
+
+  {% if page.faq %}
+  <section class="faq" aria-labelledby="faq-h">
+    <h2 id="faq-h">Common questions</h2>
+    <div class="faq-list">
+      {% for x in page.faq %}
+      <details>
+        <summary>{{ x.q }}</summary>
+        <p>{{ x.a }}</p>
+      </details>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% capture book_title %}{% if page.city %}Book a shoot in {{ page.city }}{% else %}Book a shoot{% endif %}{% endcapture %}
+  {% include book.html title=book_title %}
+</main>
+
+{% include footer.html %}
+
+<script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+---
+layout: inner
+---
+{%- assign price = site.data.pricing | where: "name", page.price_name | first -%}
+{%- assign city_pages = site.pages | where: "layout", "city" | sort: "city" -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": {{ page.nav_title | jsonify }},
+  "serviceType": {{ page.nav_title | jsonify }},
+  "description": {{ page.description | jsonify }},
+  "provider": { "@type": "ProfessionalService", "@id": "{{ site.url }}/#business", "name": "{{ site.brand_full }}" },
+  "areaServed": { "@type": "State", "name": "Utah" }{% if price %},
+  "offers": { "@type": "Offer", "price": "{{ price.price | remove: '$' | remove: ',' }}", "priceCurrency": "USD" }{% endif %}
+}
+</script>
+
+<section class="split" aria-label="About this service">
+  <div class="prose">{{ content }}</div>
+  <aside class="side-card">
+    <h2 class="side-h">What you get</h2>
+    <ul class="ticks">{% for x in page.included %}<li>{{ x }}</li>{% endfor %}</ul>
+    {% if price %}
+    <p class="side-price">{{ price.price }}<span>{{ price.per }}</span></p>
+    {% endif %}
+    <a class="btn btn--gold" href="#book" data-service="{{ page.price_name | default: 'Not sure yet' }}">Book {{ page.nav_title | downcase }}</a>
+  </aside>
+</section>
+
+{% if page.photos or page.videos or page.reels %}
+<section class="media-band" aria-labelledby="media-h">
+  <h2 id="media-h">{{ page.media_title | default: "Recent work" }}</h2>
+  {% if page.photos %}
+  <div class="gallery gallery--compact">
+    {% for ph in page.photos %}
+      {%- assign parts = ph | split: "/" -%}{%- assign thumb = ph | replace_first: "/portfolio/", "/assets/thumbs/" -%}
+      <figure class="tile" data-cat="{{ parts[2] }}">
+        <button type="button" class="tile-btn" data-full="{{ ph | relative_url }}" aria-label="View larger photo">
+          <img src="{{ thumb | relative_url }}" alt="{{ page.nav_title }} example by {{ site.brand_full }}" loading="lazy" width="900" height="600" onerror="this.onerror=null;this.src='{{ ph | relative_url }}'">
+        </button>
+      </figure>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% if page.videos %}
+  <div class="tour-grid">
+    {% for v in page.videos %}
+    <button type="button" class="vid vid--wide" data-video="{{ v | relative_url }}" aria-label="Play video tour">
+      <img src="{{ v | replace: '.mp4', '.jpg' | relative_url }}" alt="" loading="lazy">
+      <span class="vid-play" aria-hidden="true"></span>
+    </button>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% if page.reels %}
+  <div class="reel-track reel-track--page">
+    {% for v in page.reels %}
+    <button type="button" class="vid vid--tall" data-video="{{ v | relative_url }}" aria-label="Play reel">
+      <img src="{{ v | replace: '.mp4', '.jpg' | relative_url }}" alt="" loading="lazy">
+      <span class="vid-play" aria-hidden="true"></span>
+    </button>
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>
+{% endif %}
+
+<section class="link-band" aria-labelledby="where-h">
+  <h2 id="where-h">{{ page.nav_title }} across Utah</h2>
+  <ul class="pill-links">
+    {% for p in city_pages %}<li><a href="{{ p.url | relative_url }}">{{ p.city }}</a></li>{% endfor %}
+  </ul>
+  <p class="lede">Based in Pleasant Grove. We travel anywhere in Utah.</p>
+</section>

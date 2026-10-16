@@ -1,0 +1,66 @@
+---
+layout: inner
+---
+{%- assign svc_pages = site.pages | where: "layout", "service" | sort: "order" -%}
+{%- assign city_pages = site.pages | where: "layout", "city" | sort: "city" -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Real estate photography in {{ page.city }}, Utah",
+  "serviceType": "Real estate photography",
+  "description": {{ page.description | jsonify }},
+  "provider": { "@type": "ProfessionalService", "@id": "{{ site.url }}/#business", "name": "{{ site.brand_full }}" },
+  "areaServed": { "@type": "City", "name": "{{ page.city }}, UT" }
+}
+</script>
+
+<section class="split" aria-label="About shooting in {{ page.city }}">
+  <div class="prose">{{ content }}</div>
+  <aside class="side-card">
+    <h2 class="side-h">What we shoot in {{ page.city }}</h2>
+    <ul class="svc-links">
+      {% for p in svc_pages %}<li><a href="{{ p.url | relative_url }}"><strong>{{ p.nav_title }}</strong><span>{{ p.short }}</span></a></li>{% endfor %}
+    </ul>
+  </aside>
+</section>
+
+{% if page.photos %}
+<section class="media-band" aria-labelledby="media-h">
+  <h2 id="media-h">Recent UREV work</h2>
+  <div class="gallery gallery--compact">
+    {% for ph in page.photos %}
+      {%- assign parts = ph | split: "/" -%}{%- assign thumb = ph | replace_first: "/portfolio/", "/assets/thumbs/" -%}
+      <figure class="tile" data-cat="{{ parts[2] }}">
+        <button type="button" class="tile-btn" data-full="{{ ph | relative_url }}" aria-label="View larger photo">
+          <img src="{{ thumb | relative_url }}" alt="Utah real estate photography by {{ site.brand_full }}" loading="lazy" width="900" height="600" onerror="this.onerror=null;this.src='{{ ph | relative_url }}'">
+        </button>
+      </figure>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<section class="pricing pricing--compact" aria-labelledby="price-h">
+  <div class="pricing-head">
+    <h2 id="price-h">{{ page.city }} pricing</h2>
+    <p>Same starting prices across Utah County and the Wasatch Front. Send the address for an exact quote.</p>
+  </div>
+  <div class="price-grid">
+    {% for p in site.data.pricing %}
+    <article class="price-card{% if p.featured %} is-featured{% endif %}">
+      <h3>{{ p.name }}</h3>
+      <p class="price">{{ p.price }}<span>{{ p.per }}</span></p>
+      <p class="price-sum">{{ p.summary }}</p>
+      <a class="btn {% if p.featured %}btn--gold{% else %}btn--dark{% endif %}" href="#book" data-service="{{ p.name }}">{{ p.button }}</a>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="link-band" aria-labelledby="near-h">
+  <h2 id="near-h">Also serving</h2>
+  <ul class="pill-links">
+    {% for p in city_pages %}{% if p.url != page.url %}<li><a href="{{ p.url | relative_url }}">{{ p.city }}</a></li>{% endif %}{% endfor %}
+  </ul>
+</section>

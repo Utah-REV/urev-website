@@ -1,0 +1,48 @@
+{%- assign svc_pages = site.pages | where: "layout", "service" | sort: "order" -%}
+{%- assign city_pages = site.pages | where: "layout", "city" | sort: "city" -%}
+<footer class="site-footer">
+  <div class="footer-cols">
+    <div>
+      <p class="footer-h">Services</p>
+      <ul>
+        {% for p in svc_pages %}<li><a href="{{ p.url | relative_url }}">{{ p.nav_title }}</a></li>{% endfor %}
+      </ul>
+    </div>
+    <div class="footer-cities">
+      <p class="footer-h">Real estate photography by city</p>
+      <ul>
+        {% for p in city_pages %}<li><a href="{{ p.url | relative_url }}">{{ p.city }}</a></li>{% endfor %}
+      </ul>
+    </div>
+    <div>
+      <p class="footer-h">Contact</p>
+      <ul>
+        {% if site.phone != "" %}<li><a href="tel:+1{{ site.phone | remove: '-' }}">{{ site.phone }}</a></li>{% endif %}
+        <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+        <li><a href="{{ '/' | relative_url }}#book">Book a shoot</a></li>
+        {% if site.instagram != "" %}<li><a href="https://www.instagram.com/{{ site.instagram }}/">Instagram</a></li>{% endif %}
+        {% if site.facebook != "" %}<li><a href="{{ site.facebook }}">Facebook</a></li>{% endif %}
+      </ul>
+    </div>
+  </div>
+  <p class="footer-word" aria-hidden="true">UREV</p>
+  <div class="footer-row">
+    <p>&copy; {{ site.time | date: "%Y" }} {{ site.brand_full }}. Pleasant Grove, Utah.</p>
+    <p class="footer-links"><a href="{{ site.sister_brand_url }}">Drone work by {{ site.sister_brand_name }}</a></p>
+  </div>
+</footer>
+
+<nav class="quick-bar" aria-label="Quick contact">
+  {% if site.phone != "" %}<a href="sms:+1{{ site.phone | remove: '-' }}">Text us</a>
+  <a href="tel:+1{{ site.phone | remove: '-' }}">Call</a>{% endif %}
+  <a class="quick-book" href="{{ '/' | relative_url }}#book">Book a shoot</a>
+</nav>
+
+<div class="svc-preview" aria-hidden="true"><img alt=""></div>
+
+<dialog class="viewer" id="viewer" aria-label="Media viewer">
+  <div class="viewer-stage"></div>
+  <button type="button" class="v-close" aria-label="Close">&times;</button>
+  <button type="button" class="v-prev" aria-label="Previous photo">&#8249;</button>
+  <button type="button" class="v-next" aria-label="Next photo">&#8250;</button>
+</dialog>

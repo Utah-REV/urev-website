@@ -1,0 +1,35 @@
+{%- assign tel = site.phone | remove: "-" | remove: " " | remove: "(" | remove: ")" -%}
+  <section id="book" class="book" aria-labelledby="book-h">
+    <div class="book-intro">
+      <h2 id="book-h">{{ include.title | default: "Book a shoot" }}</h2>
+      <p>Tell us about the property and we'll confirm your date and quote within 24 hours.</p>
+      <dl class="contact">
+        {% if site.phone != "" %}<div><dt>Call or text</dt><dd><a href="tel:+1{{ tel }}">{{ site.phone }}</a></dd></div>{% endif %}
+        <div><dt>Email</dt><dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd></div>
+        <div><dt>Based in</dt><dd>Pleasant Grove, Utah</dd></div>
+      </dl>
+    </div>
+
+    <form class="book-form" id="book-form" data-formspree="{{ site.formspree_id }}" data-email="{{ site.email }}" novalidate>
+      <div class="field-row">
+        <label>Name<input name="name" autocomplete="name" required></label>
+        <label>Phone<input name="phone" type="tel" autocomplete="tel"></label>
+      </div>
+      <label>Email<input name="email" type="email" autocomplete="email" required></label>
+      <label>Property address<input name="address" autocomplete="street-address" required></label>
+      <div class="field-row">
+        <label>Service
+          <select name="service">
+            {% for p in site.data.pricing %}<option>{{ p.name }}</option>{% endfor %}
+            <option>Not sure yet</option>
+          </select>
+        </label>
+        <label>Preferred date<input name="date" type="date"></label>
+      </div>
+      <label>Anything else?<textarea name="details" rows="4" placeholder="Square footage, listing date, access notes"></textarea></label>
+      <input type="hidden" name="_subject" value="New UREV shoot request">
+      <input type="text" name="_gotcha" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn btn--gold" type="submit">Send request</button>
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </section>

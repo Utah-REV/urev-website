@@ -1,0 +1,20 @@
+---
+layout: inner
+title: Real Estate Media Services in Utah
+description: Real estate photography, video tours and reels, drone aerials, and social media management for Utah agents, brokerages, and builders.
+h1: Real estate media services
+lede: Everything a Utah listing needs, from the first photo to the last post.
+hero: /portfolio/interiors/02-great-room-living-area-utah.jpg
+---
+<section class="svc-index" aria-label="Services">
+  {% assign svc_pages = site.pages | where: "layout", "service" | sort: "order" %}
+  <ul class="svc">
+    {% for p in svc_pages %}
+    <li data-img="{{ p.hero }}">
+      <img src="{{ p.hero | replace_first: '/portfolio/', '/assets/thumbs/' | relative_url }}" alt="" loading="lazy" onerror="this.onerror=null;this.src='{{ p.hero | relative_url }}'">
+      <h3><a href="{{ p.url | relative_url }}">{{ p.nav_title }}</a></h3>
+      <p>{{ p.short }} <a href="{{ p.url | relative_url }}">Learn more</a></p>
+    </li>
+    {% endfor %}
+  </ul>
+</section>

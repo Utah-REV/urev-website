@@ -7,10 +7,20 @@ title: Page not found
 <html lang="en">
 <head>
 {% include head.html %}
+<meta name="robots" content="noindex">
 </head>
-<body class="book" style="min-height:100vh;display:grid;place-content:center;">
-  <h2>That page doesn't exist.</h2>
-  <p>It may have moved. Head back to the homepage to see recent listings.</p>
-  <a class="btn btn--glow" href="{{ '/' | relative_url }}">Go to homepage</a>
+<body class="inner">
+{% include header.html %}
+<main id="main">
+  <section class="page-hero" style="--hero: url('{{ '/portfolio/interiors/02-great-room-living-area-utah.jpg' | relative_url }}'); min-height: 100svh;">
+    <h1>That page doesn't exist.</h1>
+    <p class="page-lede">It may have moved. Head back to the homepage to see recent listings, or book a shoot.</p>
+    <div class="intro-actions">
+      <a class="btn btn--gold" href="{{ '/' | relative_url }}">Go to the homepage</a>
+      <a class="btn btn--ghost" href="{{ '/' | relative_url }}#book">Book a shoot</a>
+    </div>
+  </section>
+</main>
+<script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
 </body>
 </html>

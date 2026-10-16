@@ -48,6 +48,17 @@
     window.addEventListener('resize', init);
   }
 
+  // Mobile quick-contact bar appears after the first screen, hides over the booking form
+  var quick = $('.quick-bar'), bookSec = $('#book');
+  if (quick) {
+    var qUpdate = function () {
+      var past = window.scrollY > window.innerHeight * 0.9;
+      var atBook = bookSec && bookSec.getBoundingClientRect().top < window.innerHeight * 0.6 && bookSec.getBoundingClientRect().bottom > 0;
+      quick.classList.toggle('is-on', past && !atBook);
+    };
+    window.addEventListener('scroll', qUpdate, { passive: true }); qUpdate();
+  }
+
   // Services: a photo preview follows the cursor on desktop
   var preview = $('.svc-preview');
   if (preview && canHover && !reduce) {

@@ -378,3 +378,97 @@ main > section { padding: clamp(88px, 12vw, 168px) var(--inset); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
+
+/* ======================================================
+   Inner pages (services and cities)
+   ====================================================== */
+.page-hero {
+  position: relative; isolation: isolate; padding: clamp(150px, 20vw, 220px) var(--inset) clamp(64px, 8vw, 104px) !important;
+  background: var(--black);
+}
+.page-hero::before {
+  content: ""; position: absolute; inset: 0; z-index: -2;
+  background: var(--hero, none) center / cover no-repeat;
+}
+.page-hero::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(90deg, rgba(0,0,0,.88) 0%, rgba(0,0,0,.62) 55%, rgba(0,0,0,.35) 100%), linear-gradient(0deg, rgba(0,0,0,.9), rgba(0,0,0,0) 45%);
+}
+.page-hero h1 { font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1.02; max-width: 15ch; font-weight: 600; text-wrap: balance; }
+.page-lede { max-width: 52ch; margin: 1.3rem 0 2rem; font-size: clamp(1.05rem, 1.5vw, 1.2rem); color: rgba(243,238,228,.86); }
+.crumbs { display: flex; gap: 10px; margin-bottom: 1.5rem; font-size: .9rem; }
+.crumbs a { color: var(--gold); text-decoration: none; }
+.crumbs a + a::before { content: "/"; color: var(--mute); margin-right: 10px; }
+
+.split { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(300px, .9fr); gap: 3rem clamp(40px, 6vw, 96px); align-items: start; }
+.prose p { margin: 0 0 1.25em; font-size: 1.12rem; color: rgba(243,238,228,.82); max-width: 62ch; }
+.prose p:first-child { font: 400 clamp(1.45rem, 2.3vw, 1.85rem)/1.35 var(--serif); color: var(--text); font-variation-settings: "opsz" 20; }
+.prose a { color: var(--gold); }
+.side-card { border: 1px solid var(--gold-line); padding: clamp(24px, 3vw, 36px); position: sticky; top: 100px; background: var(--coal); }
+.side-h { font-size: 1.5rem; margin-bottom: 1.1rem; }
+.ticks { list-style: none; margin: 0 0 1.5rem; padding: 0; display: grid; gap: .6rem; }
+.ticks li { padding-left: 22px; position: relative; color: rgba(243,238,228,.85); }
+.ticks li::before { content: ""; position: absolute; left: 0; top: .8em; width: 10px; height: 1px; background: var(--gold); }
+.side-price { margin: 0 0 1.4rem; padding-top: 1.2rem; border-top: 1px solid var(--gold-line); font: 500 2.6rem/1 var(--serif); color: var(--gold); display: flex; align-items: baseline; gap: .6rem; font-variation-settings: "opsz" 20; }
+.side-price span { font: 500 .9rem/1 var(--sans); color: var(--mute); }
+.svc-links { list-style: none; margin: 0; padding: 0; }
+.svc-links li + li { border-top: 1px solid var(--gold-line); }
+.svc-links a { display: grid; gap: 2px; padding: 14px 0; text-decoration: none; }
+.svc-links strong { font: 500 1.2rem/1.2 var(--serif); font-variation-settings: "opsz" 20; transition: color .2s; }
+.svc-links span { color: var(--mute); font-size: .95rem; }
+.svc-links a:hover strong { color: var(--gold); }
+
+.media-band { background: var(--coal); }
+.media-band h2 { margin-bottom: clamp(28px, 4vw, 48px); }
+.gallery--compact { grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+.media-band .tour-grid + .reel-track, .media-band .gallery + .tour-grid { margin-top: 10px; }
+.reel-track--page { padding-right: 0; grid-auto-columns: clamp(180px, 19vw, 250px); }
+
+.link-band .pill-links { list-style: none; margin: 1.5rem 0 1rem; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.pill-links a { display: inline-block; padding: 10px 16px; border: 1px solid var(--gold-line); text-decoration: none; transition: border-color .2s, color .2s; }
+.pill-links a:hover { border-color: var(--gold); color: var(--gold); }
+
+.pricing--compact .price-card ul { display: none; }
+.pricing--compact .price-sum { flex: 1; }
+
+.svc-index .svc h3 a { text-decoration: none; }
+.svc-index .svc p a { color: var(--gold); white-space: nowrap; }
+.svc h3 a { color: inherit; text-decoration: none; }
+
+/* Add-ons under pricing */
+.addons { margin-top: clamp(40px, 5vw, 64px); display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 2fr); gap: 1rem 3rem; align-items: start; }
+.addons h3 { font-size: 1.5rem; }
+.addons ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 2.5rem; }
+.addons li { padding: 12px 0; border-bottom: 1px solid rgba(18,17,15,.14); display: flex; justify-content: space-between; gap: 1rem; }
+.addons li span { color: var(--ink-mute); white-space: nowrap; }
+
+/* Footer link columns */
+.footer-cols { display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 2rem 3rem; padding-bottom: clamp(40px, 6vw, 72px); }
+.footer-h { margin: 0 0 1rem; font: 500 1.15rem/1.2 var(--serif); color: var(--gold); font-variation-settings: "opsz" 20; }
+.footer-cols ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .45rem; }
+.footer-cities ul { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .45rem 2rem; }
+.footer-cols a { color: var(--mute); text-decoration: none; transition: color .2s; }
+.footer-cols a:hover { color: var(--gold); }
+
+/* Mobile quick contact bar */
+.quick-bar { display: none; }
+@media (max-width: 820px) {
+  .quick-bar {
+    display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 1px;
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 45;
+    background: var(--gold-line); border-top: 1px solid var(--gold-line);
+    transform: translateY(110%); transition: transform .35s var(--ease);
+    padding-bottom: env(safe-area-inset-bottom); 
+  }
+  .quick-bar.is-on { transform: none; }
+  .quick-bar a { display: grid; place-items: center; min-height: 54px; background: rgba(0,0,0,.94); color: var(--text); text-decoration: none; font-weight: 600; font-size: .95rem; }
+  .quick-bar .quick-book { background: var(--gold); color: var(--black); }
+  .site-footer { padding-bottom: 84px; }
+  .split, .addons { grid-template-columns: 1fr; }
+  .side-card { position: static; }
+  .footer-cols { grid-template-columns: 1fr 1fr; }
+  .footer-cities { grid-column: 1 / -1; grid-row: 2; }
+  .addons ul { grid-template-columns: 1fr; }
+}
+.area-grid a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--gold-line); transition: color .2s, border-color .2s; }
+.area-grid a:hover { color: var(--gold); border-color: var(--gold); }

@@ -1,0 +1,9 @@
+# Add-ons listed under the pricing cards. Change "note" to a price (e.g. "+$75") when you set one.
+- name: Rush delivery (next day)
+  note: Priced per shoot
+- name: Extra vertical reel
+  note: Priced per reel
+- name: Property line overlays for land
+  note: Priced per lot
+- name: Exterior photos added to a past drone shoot
+  note: Priced per home

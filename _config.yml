@@ -43,6 +43,7 @@ plugins:
   - jekyll-sitemap
 
 exclude:
+  - tools
   - README.md
   - SETUP-GUIDE.md
   - Gemfile

@@ -31,7 +31,7 @@ layout: null
 <!doctype html>
 <html lang="en">
 <head>
-{% include head.html og_image=og %}
+{% include head.html og_image="/assets/social-share.jpg" %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -72,25 +72,7 @@ layout: null
 <body>
 <script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('fx');</script>
 
-<a class="skip" href="#main">Skip to content</a>
-
-<header class="site-header">
-  <a class="brand" href="{{ '/' | relative_url }}" aria-label="{{ site.brand_full }} home">
-    {% include logo.svg %}
-    <span class="brand-text"><span class="brand-name">{{ site.brand }}</span><span class="brand-sub">{{ site.brand_full }}</span></span>
-  </a>
-  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">
-    <span class="menu-icon" aria-hidden="true"></span><span class="visually-hidden">Menu</span>
-  </button>
-  <nav id="site-nav" aria-label="Main">
-    <a href="#work">Work</a>
-    <a href="#services">Services</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#areas">Areas</a>
-    <a href="#faq">FAQ</a>
-    <a class="nav-cta" href="#book">Book a shoot</a>
-  </nav>
-</header>
+{% include header.html %}
 
 <main id="main">
 
@@ -147,7 +129,8 @@ layout: null
         {%- assign out = "" -%}{%- for w in label -%}{%- assign cw = w | capitalize -%}{%- if w == "of" or w == "and" or w == "the" -%}{%- assign cw = w -%}{%- endif -%}{%- if forloop.first -%}{%- assign out = cw -%}{%- else -%}{%- assign out = out | append: " " | append: cw -%}{%- endif -%}{%- endfor -%}{%- assign label = out | replace: " Utah", ", Utah" -%}
         <figure class="tile" data-cat="{{ cat }}">
           <button type="button" class="tile-btn" data-full="{{ f.path | relative_url }}" aria-label="View larger: {{ label }}">
-            <img src="{{ f.path | relative_url }}" alt="{{ label }}, photographed by {{ site.brand_full }}" loading="lazy" decoding="async">
+            {%- assign thumb = f.path | replace_first: "/portfolio/", "/assets/thumbs/" | replace: f.extname, ".jpg" -%}
+            <img src="{{ thumb | relative_url }}" alt="{{ label }}, photographed by {{ site.brand_full }}" loading="lazy" decoding="async" width="900" height="600" onerror="this.onerror=null;this.src='{{ f.path | relative_url }}'">
             <span class="tile-cap" aria-hidden="true">{{ label | remove: ", Utah" | remove: ", Utah County" }}</span>
           </button>
         </figure>
@@ -199,22 +182,22 @@ layout: null
     <ul class="svc">
       <li data-img="/portfolio/interiors/01-open-kitchen-island-utah.jpg">
         <img src="{{ '/portfolio/interiors/01-open-kitchen-island-utah.jpg' | relative_url }}" alt="" loading="lazy">
-        <h3>Listing photography</h3>
+        <h3><a href="{{ '/services/real-estate-photography/' | relative_url }}">Listing photography</a></h3>
         <p>Bright, true-to-color interior and exterior photos, edited and sized for the MLS, Zillow, and print.</p>
       </li>
       <li data-img="/videos/tours/01-custom-home-tour-alpine-utah.jpg">
         <img src="{{ '/videos/tours/01-custom-home-tour-alpine-utah.jpg' | relative_url }}" alt="" loading="lazy">
-        <h3>Video tours and reels</h3>
+        <h3><a href="{{ '/services/real-estate-video/' | relative_url }}">Video tours and reels</a></h3>
         <p>Cinematic walkthroughs for the listing page, plus vertical reels cut for Instagram, TikTok, and Facebook.</p>
       </li>
       <li data-img="/portfolio/aerial/01-luxury-home-aerial-alpine-utah.jpg">
         <img src="{{ '/portfolio/aerial/01-luxury-home-aerial-alpine-utah.jpg' | relative_url }}" alt="" loading="lazy">
-        <h3>Drone aerials</h3>
+        <h3><a href="{{ '/services/drone-photography/' | relative_url }}">Drone aerials</a></h3>
         <p>Aerial photos and video of the home, the lot, and the mountain views, flown by our licensed sister company, <a href="{{ site.sister_brand_url }}">{{ site.sister_brand_name }}</a>.</p>
       </li>
       <li data-img="/videos/reels/02-detached-garage-reel-peoa.jpg">
         <img src="{{ '/videos/reels/02-detached-garage-reel-peoa.jpg' | relative_url }}" alt="" loading="lazy">
-        <h3>Social media management</h3>
+        <h3><a href="{{ '/services/social-media-management/' | relative_url }}">Social media management</a></h3>
         <p>We plan, edit, caption, and post your content every week, answer comments, and keep your page active between listings.</p>
       </li>
     </ul>
@@ -237,6 +220,12 @@ layout: null
       </article>
       {% endfor %}
     </div>
+    {% if site.data.addons %}
+    <div class="addons">
+      <h3>Add-ons</h3>
+      <ul>{% for a in site.data.addons %}<li>{{ a.name }}<span>{{ a.note }}</span></li>{% endfor %}</ul>
+    </div>
+    {% endif %}
     <ol class="steps" aria-label="How a shoot works">
       <li><strong>Book</strong><span>Send the address, the date, and what the listing needs.</span></li>
       <li><strong>Shoot</strong><span>Inside, outside, and from the air, in one visit.</span></li>
@@ -251,7 +240,7 @@ layout: null
       {% for g in site.data.areas %}
       <div>
         <h3>{{ g.county }}</h3>
-        <ul>{% for c in g.cities %}<li>{{ c }}</li>{% endfor %}</ul>
+        <ul>{% for c in g.cities %}{% assign cp = site.pages | where: "city", c | first %}<li>{% if cp %}<a href="{{ cp.url | relative_url }}">{{ c }}</a>{% else %}{{ c }}{% endif %}</li>{% endfor %}</ul>
       </div>
       {% endfor %}
     </div>
@@ -279,64 +268,11 @@ layout: null
     </div>
   </section>
 
-  <section id="book" class="book" aria-labelledby="book-h">
-    <div class="book-intro">
-      <h2 id="book-h">Book a shoot</h2>
-      <p>Tell us about the property and we'll confirm your date and quote within 24 hours.</p>
-      <dl class="contact">
-        {% if site.phone != "" %}<div><dt>Call or text</dt><dd><a href="tel:+1{{ tel }}">{{ site.phone }}</a></dd></div>{% endif %}
-        <div><dt>Email</dt><dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd></div>
-        <div><dt>Based in</dt><dd>Pleasant Grove, Utah</dd></div>
-      </dl>
-    </div>
-
-    <form class="book-form" id="book-form" data-formspree="{{ site.formspree_id }}" data-email="{{ site.email }}" novalidate>
-      <div class="field-row">
-        <label>Name<input name="name" autocomplete="name" required></label>
-        <label>Phone<input name="phone" type="tel" autocomplete="tel"></label>
-      </div>
-      <label>Email<input name="email" type="email" autocomplete="email" required></label>
-      <label>Property address<input name="address" autocomplete="street-address" required></label>
-      <div class="field-row">
-        <label>Service
-          <select name="service">
-            {% for p in site.data.pricing %}<option>{{ p.name }}</option>{% endfor %}
-            <option>Not sure yet</option>
-          </select>
-        </label>
-        <label>Preferred date<input name="date" type="date"></label>
-      </div>
-      <label>Anything else?<textarea name="details" rows="4" placeholder="Square footage, listing date, access notes"></textarea></label>
-      <input type="hidden" name="_subject" value="New UREV shoot request">
-      <input type="text" name="_gotcha" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <button class="btn btn--gold" type="submit">Send request</button>
-      <p class="form-status" role="status" aria-live="polite"></p>
-    </form>
-  </section>
+  {% include book.html %}
 
 </main>
 
-<footer class="site-footer">
-  <p class="footer-word" aria-hidden="true">UREV</p>
-  <div class="footer-row">
-    <p>&copy; {{ site.time | date: "%Y" }} {{ site.brand_full }}. Pleasant Grove, Utah.</p>
-    <p class="footer-links">
-      {% if site.instagram != "" %}<a href="https://www.instagram.com/{{ site.instagram }}/">Instagram</a>{% endif %}
-      {% if site.facebook != "" %}<a href="{{ site.facebook }}">Facebook</a>{% endif %}
-      <a href="mailto:{{ site.email }}">{{ site.email }}</a>
-      <a href="{{ site.sister_brand_url }}">Drone work by {{ site.sister_brand_name }}</a>
-    </p>
-  </div>
-</footer>
-
-<div class="svc-preview" aria-hidden="true"><img alt=""></div>
-
-<dialog class="viewer" id="viewer" aria-label="Media viewer">
-  <div class="viewer-stage"></div>
-  <button type="button" class="v-close" aria-label="Close">&times;</button>
-  <button type="button" class="v-prev" aria-label="Previous photo">&#8249;</button>
-  <button type="button" class="v-next" aria-label="Next photo">&#8250;</button>
-</dialog>
+{% include footer.html %}
 
 <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
 </body>
