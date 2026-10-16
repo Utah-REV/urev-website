@@ -33,6 +33,7 @@ gallery_order: [interiors, exteriors, aerial, land]
 
 # Hero video at the top of the page (poster image shows while it loads)
 hero_video: "/videos/hero.mp4"
+hero_video_mobile: "/videos/hero-mobile.mp4"
 hero_poster: "/videos/hero.jpg"
 
 sister_brand_name: "801 Aerial"

@@ -97,6 +97,7 @@ layout: null
   <section class="intro" aria-labelledby="hero-h">
     <div class="intro-pin">
       <video class="intro-video" autoplay muted loop playsinline preload="auto" poster="{{ site.hero_poster | relative_url }}" aria-hidden="true">
+        <source src="{{ site.hero_video_mobile | relative_url }}" type="video/mp4" media="(max-width: 820px)">
         <source src="{{ site.hero_video | relative_url }}" type="video/mp4">
       </video>
       <div class="intro-mask" aria-hidden="true">
