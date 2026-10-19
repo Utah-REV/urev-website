@@ -25,7 +25,7 @@ turnaround: "24–48 hours"
 formspree_id: "mqpewlaa"
 
 # Google: paste these in when you set them up (step 7)
-google_analytics_id: ""          # e.g. "G-XXXXXXXXXX"
+google_analytics_id: "G-MR21PPFYMV"          # e.g. "G-XXXXXXXXXX"
 google_site_verification: ""     # the content="..." code from Search Console
 
 # Order of photo filter buttons and gallery (folders not listed go last)
