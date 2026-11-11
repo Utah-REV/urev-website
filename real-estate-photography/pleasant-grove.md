@@ -22,4 +22,22 @@ faq:
 ---
 Pleasant Grove is home base for UREV, so listings here get the quickest scheduling and no travel fee. We shoot everything from older homes near downtown to newer builds on the bench below Mount Timpanogos.
 
-Timpanogos is one of the best backdrops in the state, and we plan exterior and drone shots around it. For homes on larger lots or near Grove Creek and the foothills, aerials show buyers the space and the views that make Pleasant Grove so popular.
+## Neighborhoods we shoot in Pleasant Grove
+
+We cover all of Pleasant Grove, including the historic homes around downtown and Main Street, the Manila area, the neighborhoods near Battle Creek and Grove Creek canyons, and the newer homes on the bench. We also shoot in Lindon, American Fork, Cedar Hills, Highland, Alpine, and Orem, so agents working anywhere in north Utah County can book one team.
+
+## Mount Timpanogos as a backdrop
+
+Timpanogos is one of the best backdrops in the state, and we plan exterior and drone shots around it. On the bench, we frame the front of the home with the mountain behind it. For homes on larger lots or near Grove Creek and the foothills, aerials show buyers the space and the views that make Pleasant Grove so popular.
+
+## Older homes and new builds
+
+Pleasant Grove has a mix of older homes with character and newer builds with open floor plans. For older homes, we bracket and blend every shot so rooms with smaller windows still look bright and true to color. For new builds, we focus on clean lines, wide but natural angles, and twilight exteriors when the home has curb appeal worth showing off.
+
+## Video tours and social media
+
+Our Full Listing Media package includes photos, drone, a walkthrough video tour, and a vertical reel, all from one visit. As part of our social media management, we can post your listings to Instagram and Facebook for you, so every home you sell keeps building your brand.
+
+## Same-week scheduling
+
+Since we're based here, Pleasant Grove listings can usually be shot within a day or two, and often the same week you call. Listing photos start at $250, full listing media with drone and video starts at $400, and edited photos and video are delivered within 24–48 hours.

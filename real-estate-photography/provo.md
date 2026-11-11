@@ -22,4 +22,26 @@ faq:
 ---
 Provo listings range from investment properties near BYU to family homes in neighborhoods like Edgemont, Riverbottoms, and Grandview. Each needs a different approach, and we shoot to match: clean, bright, and practical for rentals and condos, and more cinematic for higher-end homes.
 
-Drone photos help Provo buyers see how close a home is to campus, Provo Canyon, the river trail, and the mountains. We're about 20 minutes away in Pleasant Grove, so scheduling is easy.
+## Neighborhoods we shoot in Provo
+
+We cover all of Provo, including Edgemont, Riverbottoms, Grandview, Foothill, Pleasant View, Joaquin, Indian Hills, and the Lakeview area on the west side. We also shoot in Springville, Mapleton, Spanish Fork, Orem, and Vineyard, with no travel fee anywhere in Utah County.
+
+## Student housing and investment properties
+
+With BYU and UVU nearby, a lot of Provo listings are rentals, duplexes, and condos. For those, we keep the shoot fast and practical: bright, clean photos of every room and a simple floor-plan-friendly order, delivered quickly so you can list right away. Listing photos start at $250.
+
+## Family homes and higher-end listings
+
+In neighborhoods like Edgemont, Riverbottoms, and the Foothill area, buyers are looking at the home and the setting. We bracket and blend every interior shot so rooms look bright and natural, and we shoot exteriors when the light is best on the front of the home. For higher-end homes, a video tour and a vertical reel help buyers feel the space before they visit.
+
+## Drone photos in Provo
+
+Drone photos help Provo buyers see how close a home is to campus, Provo Canyon, the river trail, and the mountains. Every flight is flown by an FAA Part 107 licensed pilot. Parts of west Provo sit near Provo Airport's controlled airspace, so we check every address ahead of time and get FAA authorization when it's required.
+
+## Social media for Provo agents
+
+We also offer social media management, so the photos and reels from your listings get posted to your Instagram and Facebook. It's an easy way to stay in front of past clients and new buyers without spending your evenings making posts.
+
+## Scheduling
+
+We're about 20 minutes away in Pleasant Grove, so scheduling is easy. Send the address and your listing date, and we'll confirm a time within 24 hours. Edited photos and video are delivered within 24–48 hours.

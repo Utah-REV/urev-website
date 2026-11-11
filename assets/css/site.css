@@ -409,6 +409,8 @@ main > section { padding: clamp(88px, 12vw, 168px) var(--inset); }
 .prose p { margin: 0 0 1.25em; font-size: 1.12rem; color: rgba(243,238,228,.82); max-width: 62ch; }
 .prose p:first-child { font: 400 clamp(1.45rem, 2.3vw, 1.85rem)/1.35 var(--serif); color: var(--text); font-variation-settings: "opsz" 20; }
 .prose a { color: var(--gold); }
+.prose h2 { margin: 2em 0 .6em; font: 500 clamp(1.3rem, 2vw, 1.6rem)/1.25 var(--serif); color: var(--text); text-wrap: balance; max-width: 62ch; }
+.prose h2::before { content: ""; display: block; width: 36px; height: 1px; background: var(--gold); margin-bottom: .8em; }
 .side-card { border: 1px solid var(--gold-line); padding: clamp(24px, 3vw, 36px); position: sticky; top: 100px; background: var(--coal); }
 .side-h { font-size: 1.5rem; margin-bottom: 1.1rem; }
 .ticks { list-style: none; margin: 0 0 1.5rem; padding: 0; display: grid; gap: .6rem; }

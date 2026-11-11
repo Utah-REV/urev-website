@@ -33,7 +33,7 @@ layout: inner
       {%- assign parts = ph | split: "/" -%}{%- assign thumb = ph | replace_first: "/portfolio/", "/assets/thumbs/" -%}
       <figure class="tile" data-cat="{{ parts[2] }}">
         <button type="button" class="tile-btn" data-full="{{ ph | relative_url }}" aria-label="View larger photo">
-          <img src="{{ thumb | relative_url }}" alt="Utah real estate photography by {{ site.brand_full }}" loading="lazy" width="900" height="600" onerror="this.onerror=null;this.src='{{ ph | relative_url }}'">
+          <img src="{{ thumb | relative_url }}" alt="{{ site.data.photo_alts[ph] | default: 'Utah real estate photography by Utah Real Estate Visuals' }}" loading="lazy" width="900" height="600" onerror="this.onerror=null;this.src='{{ ph | relative_url }}'">
         </button>
       </figure>
     {% endfor %}
