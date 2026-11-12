@@ -25,19 +25,41 @@ layout: inner
   </aside>
 </section>
 
-{% if page.photos %}
+{% if page.photos or page.videos or page.reels %}
 <section class="media-band" aria-labelledby="media-h">
   <h2 id="media-h">Recent UREV work</h2>
+  {% if page.photos %}
   <div class="gallery gallery--compact">
     {% for ph in page.photos %}
       {%- assign parts = ph | split: "/" -%}{%- assign thumb = ph | replace_first: "/portfolio/", "/assets/thumbs/" -%}
       <figure class="tile" data-cat="{{ parts[2] }}">
         <button type="button" class="tile-btn" data-full="{{ ph | relative_url }}" aria-label="View larger photo">
-          <img src="{{ thumb | relative_url }}" alt="{{ site.data.photo_alts[ph] | default: 'Utah real estate photography by Utah Real Estate Visuals' }}" loading="lazy" width="900" height="600" onerror="this.onerror=null;this.src='{{ ph | relative_url }}'">
+          <picture><source srcset="{{ thumb | replace: '.jpg', '.webp' | relative_url }}" type="image/webp"><img src="{{ thumb | relative_url }}" alt="{{ site.data.photo_alts[ph] | default: 'Utah real estate photography by Utah Real Estate Visuals' }}" loading="lazy" width="900" height="600" onerror="this.onerror=null;this.src='{{ ph | relative_url }}'"></picture>
         </button>
       </figure>
     {% endfor %}
   </div>
+  {% endif %}
+  {% if page.videos %}
+  <div class="tour-grid">
+    {% for v in page.videos %}
+    <button type="button" class="vid vid--wide" data-video="{{ v | relative_url }}" aria-label="Play video tour">
+      <picture><source srcset="{{ v | replace: '.mp4', '.webp' | relative_url }}" type="image/webp"><img src="{{ v | replace: '.mp4', '.jpg' | relative_url }}" alt="" loading="lazy" decoding="async"></picture>
+      <span class="vid-play" aria-hidden="true"></span>
+    </button>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% if page.reels %}
+  <div class="reel-track reel-track--page">
+    {% for v in page.reels %}
+    <button type="button" class="vid vid--tall" data-video="{{ v | relative_url }}" aria-label="Play reel">
+      <picture><source srcset="{{ v | replace: '.mp4', '.webp' | relative_url }}" type="image/webp"><img src="{{ v | replace: '.mp4', '.jpg' | relative_url }}" alt="" loading="lazy" decoding="async"></picture>
+      <span class="vid-play" aria-hidden="true"></span>
+    </button>
+    {% endfor %}
+  </div>
+  {% endif %}
 </section>
 {% endif %}
 

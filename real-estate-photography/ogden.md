@@ -24,7 +24,7 @@ Ogden has some of the most character-rich homes in northern Utah, from historic 
 
 ## Areas we shoot in Ogden and Weber County
 
-We cover all of Ogden, including the east bench, the historic homes near Jefferson Avenue and downtown, and the neighborhoods off Harrison Boulevard. We also shoot in North Ogden, Pleasant View, South Ogden, Washington Terrace, Riverdale, and Roy, and up the canyon in Ogden Valley, including Huntsville, Eden, and Liberty near Pineview Reservoir, Snowbasin, and Powder Mountain.
+We cover all of Ogden, including the east bench, the historic homes near Jefferson Avenue and downtown, and the neighborhoods off Harrison Boulevard. We also shoot in North Ogden, Pleasant View, South Ogden, Washington Terrace, Riverdale, and Roy, and up the canyon in [Ogden Valley](/real-estate-photography/ogden-valley/), including Huntsville, Eden, and Liberty near Pineview Reservoir, Snowbasin, and Powder Mountain.
 
 ## Drone photography and aerial video in Ogden
 

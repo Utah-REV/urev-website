@@ -36,6 +36,10 @@ Every flight is flown by an FAA Part 107 licensed pilot through our sister compa
 
 Mountain homes usually have big windows, high ceilings, timber, and stone. We bracket and blend every shot so the interior is bright and the view outside still shows through the windows. We also photograph the features out-of-state buyers look for: ski rooms, mudrooms, garages, hot tubs, and outdoor living spaces.
 
+## Vacation rentals and Airbnb
+
+Many Park City homes are also short-term rentals. We shoot rental listings for Airbnb and VRBO with the amenity shots guests look for, like hot tubs, ski storage, and views. See our [vacation rental photography](/services/vacation-rental-photography/) page for details.
+
 ## Winter and summer shoots
 
 We plan Park City shoots around light and weather, and we're happy to schedule winter shoots that show off the snow. For homes that will sell in both seasons, some agents book a winter and a summer shoot so the listing always looks current.

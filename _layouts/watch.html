@@ -1,0 +1,32 @@
+---
+layout: inner
+---
+{%- assign poster = page.video | replace: ".mp4", ".jpg" -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": {{ page.h1 | jsonify }},
+  "description": {{ page.description | jsonify }},
+  "thumbnailUrl": "{{ site.url }}{{ poster }}",
+  "contentUrl": "{{ site.url }}{{ page.video }}",
+  "uploadDate": "{{ page.upload_date }}",
+  "duration": "{{ page.duration }}",
+  "publisher": { "@type": "Organization", "@id": "{{ site.url }}/#business", "name": "{{ site.brand_full }}", "logo": { "@type": "ImageObject", "url": "{{ site.url }}/assets/apple-touch-icon.png" } }
+}
+</script>
+
+<section class="watch{% if page.vertical %} watch--tall{% endif %}" aria-label="{{ page.h1 }}">
+  <video class="watch-video" controls playsinline preload="none" poster="{{ poster | relative_url }}" width="{% if page.vertical %}540{% else %}960{% endif %}" height="{% if page.vertical %}960{% else %}540{% endif %}">
+    <source src="{{ page.video | relative_url }}" type="video/mp4">
+  </video>
+  <div class="prose">{{ content }}</div>
+</section>
+
+<section class="link-band" aria-labelledby="more-h">
+  <h2 id="more-h">More from UREV</h2>
+  <ul class="pill-links">
+    {%- assign others = site.pages | where: "layout", "watch" -%}
+    {% for p in others %}{% if p.url != page.url %}<li><a href="{{ p.url | relative_url }}">{{ p.h1 }}</a></li>{% endif %}{% endfor %}
+  </ul>
+</section>

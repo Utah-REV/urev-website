@@ -35,7 +35,7 @@ All aerial work is flown by our sister company, [801 Aerial](https://801aerial.c
 
 ## Drone photography in Ogden and Weber County
 
-We fly listings across [Ogden](/real-estate-photography/ogden/), North Ogden, Pleasant View, and up into Ogden Valley, including Huntsville, Eden, and Liberty. Aerials show the view of Ben Lomond, the land around cabins and custom builds, and how close a home is to Pineview Reservoir, Snowbasin, and Powder Mountain. Parts of Ogden sit under controlled airspace around Ogden-Hinckley Airport and Hill Air Force Base, so we check every address and get FAA authorization before the flight when it's required.
+We fly listings across [Ogden](/real-estate-photography/ogden/), North Ogden, Pleasant View, and up into [Ogden Valley](/real-estate-photography/ogden-valley/), including Huntsville, Eden, and Liberty. Aerials show the view of Ben Lomond, the land around cabins and custom builds, and how close a home is to Pineview Reservoir, Snowbasin, and Powder Mountain. Parts of Ogden sit under controlled airspace around Ogden-Hinckley Airport and Hill Air Force Base, so we check every address and get FAA authorization before the flight when it's required.
 
 ## Drone photography in Park City
 

@@ -34,3 +34,10 @@ faq:
 Video gets a listing in front of buyers who never scroll past the third photo. We film every home with a stabilized gimbal and a drone, then cut two versions: a cinematic tour for the listing page and YouTube, and a short vertical reel built for Instagram, TikTok, and Facebook.
 
 Both are shot in the same visit as your photos, so there's no second appointment and no extra time for the seller.
+
+## Watch our recent video work
+
+{% assign watch_pages = site.pages | where: "layout", "watch" | sort: "permalink" %}
+<ul class="watch-list">
+{% for p in watch_pages %}<li><a href="{{ p.url | relative_url }}">{{ p.h1 }}</a></li>
+{% endfor %}</ul>

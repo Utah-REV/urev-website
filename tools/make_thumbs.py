@@ -7,6 +7,7 @@ GitHub runs this automatically after you upload photos or videos
 - portfolio/<folder>/<photo>.jpg  ->  assets/thumbs/<folder>/<photo>.jpg  (900px wide, for the grid)
 - videos/**/<video>.mp4 with no matching .jpg  ->  creates the .jpg thumbnail (needs ffmpeg)
 - video thumbnails larger than needed are shrunk in place
+- every thumbnail and video thumbnail also gets a smaller .webp copy next to it
 """
 import pathlib
 import shutil
@@ -17,7 +18,7 @@ from PIL import Image, ImageOps
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 PHOTO_EXTS = {".jpg", ".jpeg", ".png", ".webp"}
 GRID_WIDTH = 900
-POSTER_WIDTH = {"reels": 640, "tours": 1280}
+POSTER_WIDTH = {"reels": 540, "tours": 960}
 changed = 0
 
 
@@ -29,7 +30,18 @@ def save_resized(src, dst, width, quality=78):
             im = im.resize((width, round(im.height * width / im.width)), Image.LANCZOS)
         dst.parent.mkdir(parents=True, exist_ok=True)
         im.save(dst, "JPEG", quality=quality, optimize=True, progressive=True)
+        im.save(dst.with_suffix(".webp"), "WEBP", quality=72, method=6)
     changed += 1
+
+
+def ensure_webp(jpg):
+    """Write a .webp copy of a .jpg if it is missing or older."""
+    global changed
+    webp = jpg.with_suffix(".webp")
+    if not webp.exists() or webp.stat().st_mtime < jpg.stat().st_mtime:
+        with Image.open(jpg) as im:
+            ImageOps.exif_transpose(im).convert("RGB").save(webp, "WEBP", quality=72, method=6)
+        changed += 1
 
 
 # 1. Grid thumbnails for every portfolio photo
@@ -39,11 +51,12 @@ for src in sorted((ROOT / "portfolio").glob("*/*")):
     dst = ROOT / "assets" / "thumbs" / src.parent.name / (src.stem + ".jpg")
     if not dst.exists() or dst.stat().st_mtime < src.stat().st_mtime:
         save_resized(src, dst, GRID_WIDTH)
+    ensure_webp(dst)
 
 # Remove thumbnails whose photo was deleted
 thumb_root = ROOT / "assets" / "thumbs"
 if thumb_root.exists():
-    for t in thumb_root.glob("*/*.jpg"):
+    for t in list(thumb_root.glob("*/*.jpg")) + list(thumb_root.glob("*/*.webp")):
         if not any((ROOT / "portfolio" / t.parent.name / (t.stem + e)).exists() for e in PHOTO_EXTS | {".JPG", ".JPEG", ".PNG"}):
             t.unlink()
             changed += 1
@@ -61,5 +74,6 @@ for folder, width in POSTER_WIDTH.items():
                 too_big = im.width > width
             if too_big:
                 save_resized(poster, poster, width, quality=80)
+            ensure_webp(poster)
 
 print(f"thumbnails updated: {changed}")

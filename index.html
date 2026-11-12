@@ -87,7 +87,7 @@ layout: null
 
   <section class="intro" aria-labelledby="hero-h">
     <div class="intro-pin">
-      <video class="intro-video" autoplay muted loop playsinline preload="auto" poster="{{ site.hero_poster | relative_url }}" aria-hidden="true">
+      <video class="intro-video" autoplay muted loop playsinline preload="metadata" poster="{{ site.hero_poster | relative_url }}" aria-hidden="true">
         <source src="{{ site.hero_video_mobile | relative_url }}" type="video/mp4" media="(max-width: 820px)">
         <source src="{{ site.hero_video | relative_url }}" type="video/mp4">
       </video>
@@ -137,7 +137,7 @@ layout: null
         <figure class="tile" data-cat="{{ cat }}">
           <button type="button" class="tile-btn" data-full="{{ f.path | relative_url }}" aria-label="View larger: {{ label }}">
             {%- assign thumb = f.path | replace_first: "/portfolio/", "/assets/thumbs/" | replace: f.extname, ".jpg" -%}
-            <img src="{{ thumb | relative_url }}" alt="{{ label }}, photographed by {{ site.brand_full }}" loading="lazy" decoding="async" width="900" height="600" onerror="this.onerror=null;this.src='{{ f.path | relative_url }}'">
+            <picture><source srcset="{{ thumb | replace: '.jpg', '.webp' | relative_url }}" type="image/webp"><img src="{{ thumb | relative_url }}" alt="{{ label }}, photographed by {{ site.brand_full }}" loading="lazy" decoding="async" width="900" height="600" onerror="this.onerror=null;this.src='{{ f.path | relative_url }}'"></picture>
             <span class="tile-cap" aria-hidden="true">{{ label | remove: ", Utah" | remove: ", Utah County" }}</span>
           </button>
         </figure>
@@ -154,7 +154,7 @@ layout: null
           {%- assign poster = v.path | replace: ".mp4", ".jpg" -%}
           {%- assign w_list = v.basename | split: "-" | shift -%}{%- assign out = "" -%}{%- for w in w_list -%}{%- assign cw = w | capitalize -%}{%- if w == "of" or w == "and" or w == "the" -%}{%- assign cw = w -%}{%- endif -%}{%- if forloop.first -%}{%- assign out = cw -%}{%- else -%}{%- assign out = out | append: " " | append: cw -%}{%- endif -%}{%- endfor -%}{%- assign name = out | replace: " Utah", ", Utah" -%}
           <button type="button" class="vid vid--wide" data-video="{{ v.path | relative_url }}" aria-label="Play video: {{ name }}">
-            <img src="{{ poster | relative_url }}" alt="" loading="lazy">
+            <picture><source srcset="{{ poster | replace: '.jpg', '.webp' | relative_url }}" type="image/webp"><img src="{{ poster | relative_url }}" alt="" loading="lazy" decoding="async"></picture>
             <span class="vid-play" aria-hidden="true"></span>
             <span class="vid-label">{{ name }}</span>
           </button>
@@ -175,7 +175,7 @@ layout: null
         {%- assign poster = v.path | replace: ".mp4", ".jpg" -%}
         {%- assign w_list = v.basename | split: "-" | shift -%}{%- assign out = "" -%}{%- for w in w_list -%}{%- assign cw = w | capitalize -%}{%- if w == "of" or w == "and" or w == "the" -%}{%- assign cw = w -%}{%- endif -%}{%- if forloop.first -%}{%- assign out = cw -%}{%- else -%}{%- assign out = out | append: " " | append: cw -%}{%- endif -%}{%- endfor -%}
         <button type="button" class="vid vid--tall" data-video="{{ v.path | relative_url }}" aria-label="Play reel: {{ out }}">
-          <img src="{{ poster | relative_url }}" alt="" loading="lazy">
+          <picture><source srcset="{{ poster | replace: '.jpg', '.webp' | relative_url }}" type="image/webp"><img src="{{ poster | relative_url }}" alt="" loading="lazy" decoding="async"></picture>
           <span class="vid-play" aria-hidden="true"></span>
           <span class="vid-label">{{ out | remove: "Reel " }}</span>
         </button>
@@ -187,23 +187,23 @@ layout: null
   <section id="services" class="services" aria-labelledby="services-h">
     <h2 id="services-h">Everything a listing needs, from one team</h2>
     <ul class="svc">
-      <li data-img="/portfolio/interiors/01-open-kitchen-island-utah.jpg">
-        <img src="{{ '/portfolio/interiors/01-open-kitchen-island-utah.jpg' | relative_url }}" alt="" loading="lazy">
+      <li data-img="/assets/thumbs/interiors/01-open-kitchen-island-utah.webp">
+        <img src="{{ '/assets/thumbs/interiors/01-open-kitchen-island-utah.webp' | relative_url }}" alt="" loading="lazy" decoding="async" width="96" height="96">
         <h3><a href="{{ '/services/real-estate-photography/' | relative_url }}">Listing photography</a></h3>
         <p>Bright, true-to-color interior and exterior photos, edited and sized for the MLS, Zillow, and print.</p>
       </li>
-      <li data-img="/videos/tours/01-custom-home-tour-alpine-utah.jpg">
-        <img src="{{ '/videos/tours/01-custom-home-tour-alpine-utah.jpg' | relative_url }}" alt="" loading="lazy">
+      <li data-img="/videos/tours/01-custom-home-tour-alpine-utah.webp">
+        <img src="{{ '/videos/tours/01-custom-home-tour-alpine-utah.webp' | relative_url }}" alt="" loading="lazy" decoding="async" width="96" height="96">
         <h3><a href="{{ '/services/real-estate-video/' | relative_url }}">Video tours and reels</a></h3>
         <p>Cinematic walkthroughs for the listing page, plus vertical reels cut for Instagram, TikTok, and Facebook.</p>
       </li>
-      <li data-img="/portfolio/aerial/01-luxury-home-aerial-alpine-utah.jpg">
-        <img src="{{ '/portfolio/aerial/01-luxury-home-aerial-alpine-utah.jpg' | relative_url }}" alt="" loading="lazy">
+      <li data-img="/assets/thumbs/aerial/01-luxury-home-aerial-alpine-utah.webp">
+        <img src="{{ '/assets/thumbs/aerial/01-luxury-home-aerial-alpine-utah.webp' | relative_url }}" alt="" loading="lazy" decoding="async" width="96" height="96">
         <h3><a href="{{ '/services/drone-photography/' | relative_url }}">Drone aerials</a></h3>
         <p>Aerial photos and video of the home, the lot, and the mountain views, flown by our licensed sister company, <a href="{{ site.sister_brand_url }}">{{ site.sister_brand_name }}</a>.</p>
       </li>
-      <li data-img="/videos/reels/02-detached-garage-reel-peoa.jpg">
-        <img src="{{ '/videos/reels/02-detached-garage-reel-peoa.jpg' | relative_url }}" alt="" loading="lazy">
+      <li data-img="/videos/reels/02-detached-garage-reel-peoa.webp">
+        <img src="{{ '/videos/reels/02-detached-garage-reel-peoa.webp' | relative_url }}" alt="" loading="lazy" decoding="async" width="96" height="96">
         <h3><a href="{{ '/services/social-media-management/' | relative_url }}">Social media management</a></h3>
         <p>We plan, edit, caption, and post your content every week, answer comments, and keep your page active between listings.</p>
       </li>
