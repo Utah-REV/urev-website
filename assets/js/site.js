@@ -240,14 +240,24 @@
     });
   });
 
+  // Remember which ad brought the visitor (utm_ tags), so leads can be matched to ads
+  var utm = {};
+  try {
+    var q = new URLSearchParams(location.search);
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].forEach(function (k) { if (q.get(k)) utm[k] = q.get(k); });
+    if (Object.keys(utm).length) sessionStorage.setItem('urev_utm', JSON.stringify(utm));
+    else utm = JSON.parse(sessionStorage.getItem('urev_utm') || '{}');
+  } catch (err) { utm = {}; }
+
   // Booking form: Formspree when configured, otherwise opens an email
   if (form) {
     var status = $('.form-status', form), submit = $('button[type="submit"]', form);
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      if (!form.checkValidity()) { status.textContent = 'Please fill in your name, email, and the property address.'; form.reportValidity(); return; }
+      if (!form.checkValidity()) { status.textContent = 'Please fill in your name and email.'; form.reportValidity(); return; }
       var id = form.getAttribute('data-formspree');
       var data = new FormData(form);
+      Object.keys(utm).forEach(function (k) { data.append(k, utm[k]); });
 
       if (!id) {
         var body = ['name', 'phone', 'email', 'address', 'service', 'date', 'details']
@@ -262,6 +272,7 @@
       fetch('https://formspree.io/f/' + id, { method: 'POST', body: data, headers: { Accept: 'application/json' } })
         .then(function (r) {
           if (!r.ok) throw new Error();
+          if (window.gtag) gtag('event', 'generate_lead', { service: data.get('service') || '', campaign: utm.utm_campaign || '', ad: utm.utm_content || '' });
           form.reset(); status.textContent = 'Request sent. We\'ll confirm your shoot within 24 hours.';
         })
         .catch(function () { status.textContent = 'That didn\'t send. Email ' + form.getAttribute('data-email') + ' and we\'ll get you booked.'; })
