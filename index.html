@@ -48,6 +48,7 @@ layout: null
   "priceRange": "$$",
   "address": { "@type": "PostalAddress", "addressLocality": "Pleasant Grove", "addressRegion": "UT", "addressCountry": "US" },
   "geo": { "@type": "GeoCoordinates", "latitude": 40.3641, "longitude": -111.7385 },
+  "openingHoursSpecification": [{ "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "09:00", "closes": "18:00" }],
   "areaServed": [{ "@type": "State", "name": "Utah" }{% for g in site.data.areas %}{% for c in g.cities %}, { "@type": "City", "name": "{{ c }}, UT" }{% endfor %}{% endfor %}],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
