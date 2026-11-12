@@ -30,6 +30,12 @@ faq:
   a: Video tours are short, cinematic edits, usually under a minute, long enough to show the flow of the home without losing viewers. Reels are 15–30 seconds, made for social feeds.
 - q: Can I post the reel on my own Instagram?
   a: Yes. Reels are delivered ready to post on Instagram, TikTok, and Facebook, and you can use them anywhere you market the listing.
+- q: How much does a real estate video tour cost?
+  a: Our Full Listing Media package starts at $400 and includes a cinematic video tour, drone aerials, a vertical reel, and 25 to 40 edited photos. Price depends on the size of the home and travel. Extra reels are available as an add-on.
+- q: Do listings with video sell faster?
+  a: Video doesn't sell a home by itself, but it helps buyers understand the layout and setting before they visit, which leads to more serious showings. It also gives you content for Instagram, Facebook, and YouTube, where video tends to reach more people than still photos.
+- q: Can I put the video tour on the MLS and Zillow?
+  a: Yes. We can deliver an unbranded version for the MLS, since most MLSs require unbranded tour links, and a branded version for your website and social media. You can add the video to Zillow and other listing sites wherever they allow it.
 ---
 Video gets a listing in front of buyers who never scroll past the third photo. We film every home with a stabilized gimbal and a drone, then cut two versions: a cinematic tour for the listing page and YouTube, and a short vertical reel built for Instagram, TikTok, and Facebook.
 

@@ -558,3 +558,11 @@ picture { display: contents; }
 .watch-list li { margin: .35em 0; break-inside: avoid; }
 
 .book-form .opt { font-weight: 400; opacity: .7; }
+
+/* Guide pages */
+.guide-body { padding: clamp(32px, 6vw, 80px) max(16px, 5vw); }
+.guide-body .prose { max-width: 72ch; }
+.guide-body table { width: 100%; border-collapse: collapse; margin: 1.2em 0; font-variant-numeric: tabular-nums; }
+.guide-body th, .guide-body td { text-align: left; padding: .7em .8em; border-bottom: 1px solid rgba(201,168,76,.25); vertical-align: top; }
+.guide-body th { color: var(--gold); font-weight: 600; }
+.guide-table { overflow-x: auto; }

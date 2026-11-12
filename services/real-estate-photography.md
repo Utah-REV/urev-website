@@ -30,9 +30,19 @@ faq:
   a: Yes. Every photo is blended so you can see through the windows, the colors stay true, and the vertical lines are straight. Exterior skies and lawns are cleaned up when needed.
 - q: Can I add drone photos to a photo shoot?
   a: Yes. Full Listing Media adds drone aerials, a video tour, and a vertical reel, all shot in the same visit.
+- q: How long does a real estate photo shoot take?
+  a: Most homes take 45 minutes to an hour and a half to photograph. Larger homes, drone aerials, and video add time, so a full media shoot on a big home can take two to three hours. We'll give you a time estimate when you book.
+- q: How many photos should a real estate listing have?
+  a: 'Most listings need 25 to 40 photos: enough to show every main room, the exterior, the yard, and the best features without filler. Larger and luxury homes may need more. Our Listing Photos package includes 25 to 40 edited photos.'
+- q: What order should listing photos be in?
+  a: 'Lead with your strongest image, usually the front exterior or an aerial. Then walk buyers through the home the way a showing would: entry, living areas, kitchen, dining, primary suite, other bedrooms and bathrooms, then the backyard and views. We can deliver your photos in this order so you can upload them as-is.'
+- q: How do I prepare a home for real estate photos?
+  a: Turn on every light and replace dead bulbs, and open all blinds. Clear kitchen and bathroom counters, hide trash cans, pet bowls, and toiletries, make the beds, close toilet lids, and put away personal photos. Outside, move cars out of the driveway, put away hoses and bins, and mow the lawn a day or two before.
 ---
 Buyers decide whether to see a home in the first few photos. Our real estate photography is built for that moment: bright rooms, true colors, straight lines, and windows you can actually see through.
 
 Every shoot covers the rooms buyers care about most, including the kitchen, main living areas, primary suite, bathrooms, and the curb view, plus the details that set your listing apart. Photos are edited one by one and delivered sized for the MLS, Zillow, your website, and print.
 
 We shoot homes of every size, from starter townhomes to custom builds and Parade of Homes entries, across Utah County, Salt Lake County, Davis County, Weber County, and beyond.
+
+Wondering about cost? Read our guide to [real estate photography prices in Utah](/real-estate-photography-cost-utah/).

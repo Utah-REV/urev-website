@@ -28,6 +28,12 @@ faq:
   a: Yes. Every flight is flown by an FAA Part 107 licensed pilot through our sister company, 801 Aerial, which the FAA requires for any commercial drone work, including real estate.
 - q: What if the weather is bad?
   a: We don’t fly in high wind, rain, or poor visibility. If weather forces a change, we reschedule the aerial portion at no extra charge.
+- q: Do you need a license to take drone photos for real estate?
+  a: Yes. Drone photos used to market a property are commercial work, so the FAA requires the pilot to hold a Part 107 Remote Pilot Certificate. All UREV drone work is flown by a Part 107 licensed pilot through our sister company, 801 Aerial.
+- q: When is drone photography worth it for a listing?
+  a: 'Drone photos are worth it whenever the location, lot, or views help sell the home: large lots, acreage, mountain or lake views, homes near trails, parks, or ski resorts, and land listings. For a small condo or townhome, ground photos are usually enough.'
+- q: Can you fly a drone near an airport in Utah?
+  a: Often, yes, with FAA authorization. Parts of Salt Lake City, Ogden, and Provo sit in controlled airspace around their airports. We check every address before the shoot and request FAA authorization through LAANC when it's needed.
 ---
 In Utah, the view often sells the home. Drone photography shows what ground photos can't: the size of the lot, the backyard and pool from above, how close the home sits to trails and parks, and the mountains behind it.
 

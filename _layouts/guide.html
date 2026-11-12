@@ -1,0 +1,18 @@
+---
+layout: inner
+---
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": {{ page.h1 | jsonify }},
+  "description": {{ page.description | jsonify }},
+  "image": "{{ site.url }}{{ page.hero }}",
+  "dateModified": "{{ page.updated }}",
+  "author": { "@type": "Organization", "@id": "{{ site.url }}/#business", "name": "{{ site.brand_full }}" },
+  "publisher": { "@type": "Organization", "@id": "{{ site.url }}/#business", "name": "{{ site.brand_full }}" }
+}
+</script>
+<section class="guide-body">
+  <div class="prose">{{ content }}</div>
+</section>

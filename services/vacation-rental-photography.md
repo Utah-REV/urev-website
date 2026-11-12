@@ -31,6 +31,8 @@ faq:
   a: Rental photos start at $250, and photos with drone aerials and a video tour start at $400. A travel fee applies for Summit and Wasatch counties, so send the address for an exact quote.
 - q: Can you shoot between guest stays?
   a: Yes. Tell us your turnover window and we'll schedule around it. Most rental shoots take one to two hours.
+- q: Do professional photos help vacation rental bookings?
+  a: Yes. Guests compare dozens of rentals in a few seconds, and the first photo and photo order decide which listings get clicked. Professional photos make rooms look bright and accurate, show the amenities guests are paying for, and help your listing stand out in search results.
 ---
 In Park City, your rental is competing with hundreds of others on Airbnb and VRBO, and guests decide in a few seconds of scrolling. The first photo, the photo order, and the amenities you show make the difference between a booking and a skip. We shoot vacation rentals the same way we shoot luxury listings: bright, true to color, and focused on what guests are paying for.
 

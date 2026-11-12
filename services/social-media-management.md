@@ -30,6 +30,14 @@ faq:
   a: No. We work through Meta Business Suite access, which you can remove at any time. You stay the owner of your accounts.
 - q: Do you work with home builders too?
   a: Yes. We run social for builders as well as agents, and we can film every project you complete.
+- q: How much does social media management cost for real estate agents?
+  a: Our social media management for agents is $1,000 per month. It includes 3 feed posts and 2 Stories every week, editing, captions, a content calendar, comment and message replies, a monthly content day, and reels from every listing we shoot.
+- q: What is the best social media platform for real estate agents?
+  a: For most Utah agents, Instagram and Facebook matter most. Instagram is best for reels and building a personal brand, and Facebook is best for reaching past clients, neighbors, and local groups. YouTube works well for longer home tours and area guides. We focus on Instagram and Facebook.
+- q: How often should a real estate agent post on social media?
+  a: Consistency matters more than volume. Posting 3 to 5 times a week, with Stories in between, keeps you visible without wearing out your audience. Our plan covers 3 feed posts and 2 Stories every week.
+- q: What should real estate agents post on social media?
+  a: 'Mix listing content with posts about you and your area: new listings and reels, just-sold posts, client stories and testimonials, local market updates, favorite neighborhood spots, and behind-the-scenes of your day. Listings show what you sell. The rest shows why people should work with you.'
 ---
 Most agents know they should post more. Few have time. We handle the whole thing: we plan the calendar, film and edit the content, write the captions, post on schedule, and reply to comments and messages.
 
