@@ -35,7 +35,7 @@ faq:
 - q: Do listings with video sell faster?
   a: Video doesn't sell a home by itself, but it helps buyers understand the layout and setting before they visit, which leads to more serious showings. It also gives you content for Instagram, Facebook, and YouTube, where video tends to reach more people than still photos.
 - q: Can I put the video tour on the MLS and Zillow?
-  a: Yes. We can deliver an unbranded version for the MLS, since most MLSs require unbranded tour links, and a branded version for your website and social media. You can add the video to Zillow and other listing sites wherever they allow it.
+  a: Yes. Every video tour is unbranded, so it meets MLS rules, and you get two versions. A high-resolution version for your website, YouTube, and social media, and a smaller version sized for MLS upload limits. You can add the video to Zillow and other listing sites wherever they allow it.
 ---
 Video gets a listing in front of buyers who never scroll past the third photo. We film every home with a stabilized gimbal and a drone, then cut two versions: a cinematic tour for the listing page and YouTube, and a short vertical reel built for Instagram, TikTok, and Facebook.
 
