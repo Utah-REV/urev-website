@@ -19,6 +19,10 @@ faq:
   a: Listing photos start at $250 and full listing media with drone aerials and a video tour starts at $400. There’s no travel fee in Utah County. Send the address for an exact quote.
 - q: How fast can you shoot a listing in Provo?
   a: Send the address and your listing date, and we’ll confirm a time within 24 hours. Edited photos and video are delivered within 24–48 hours of the shoot.
+- q: Do you offer drone photography in Provo?
+  a: Yes. Every flight is flown by an FAA Part 107 licensed pilot. Parts of west Provo sit near Provo Airport's controlled airspace, so we check every address and get FAA authorization when it's required.
+- q: Do you offer social media management for Provo real estate agents?
+  a: Yes. For $1,000 per month we run your Instagram and Facebook with 3 feed posts and 2 Stories every week, using the photos and reels from every listing we shoot in Provo and across Utah County.
 ---
 Provo listings range from investment properties near BYU to family homes in neighborhoods like Edgemont, Riverbottoms, and Grandview. Each needs a different approach, and we shoot to match: clean, bright, and practical for rentals and condos, and more cinematic for higher-end homes.
 

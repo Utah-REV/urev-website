@@ -19,6 +19,10 @@ faq:
   a: Listing photos start at $250 and full listing media with drone aerials and a video tour starts at $400. There’s no travel fee in Utah County. Send the address for an exact quote.
 - q: How fast can you shoot a listing in Lehi?
   a: Send the address and your listing date, and we’ll confirm a time within 24 hours. Edited photos and video are delivered within 24–48 hours of the shoot.
+- q: Do you offer drone photography in Lehi?
+  a: Yes. Drone aerials are included in Full Listing Media, starting at $400, and every flight is flown by an FAA Part 107 licensed pilot through our sister company, 801 Aerial.
+- q: Do you offer social media management for Lehi real estate agents?
+  a: Yes. For $1,000 per month we run your Instagram and Facebook with 3 feed posts and 2 Stories every week, using the photos and reels from every listing we shoot in Lehi and across Utah County.
 ---
 Lehi is one of the fastest-growing cities in Utah, which means a lot of new construction and a lot of competition. Neighborhoods like Traverse Mountain and Holbrook Farms, and the area around Thanksgiving Point and Silicon Slopes, are full of homes that look similar online. Strong photos are how your listing stands out.
 

@@ -41,6 +41,18 @@ Video gets a listing in front of buyers who never scroll past the third photo. W
 
 Both are shot in the same visit as your photos, so there's no second appointment and no extra time for the seller.
 
+## What you get
+
+Every video tour is unbranded, so it meets MLS rules, and comes in two versions: a high-resolution file for your website, YouTube, and social media, and a smaller file sized for MLS upload limits. Each tour comes with a vertical reel cut for Instagram, TikTok, and Facebook, and extra reels are available as an add-on. Video is included in our Full Listing Media package, which starts at $400 and also includes [drone aerials](/services/drone-photography/) and 25 to 40 [listing photos](/services/real-estate-photography/).
+
+## How we film a home
+
+We plan each tour around how a buyer would walk through the home: the approach and front exterior, the entry, the main living spaces and kitchen, the primary suite, and the backyard and views. Smooth gimbal moves and drone shots of the lot and setting give buyers a feel for the layout before they ever schedule a showing.
+
+## Reels that build your brand
+
+A listing reel works twice. It markets the home, and it keeps your Instagram and Facebook active. If you'd rather not post them yourself, our [social media management](/services/social-media-management/) turns every reel into scheduled posts for you.
+
 ## Watch our recent video work
 
 {% assign watch_pages = site.pages | where: "layout", "watch" | sort: "permalink" %}

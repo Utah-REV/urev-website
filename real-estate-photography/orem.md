@@ -19,6 +19,10 @@ faq:
   a: Listing photos start at $250 and full listing media with drone aerials and a video tour starts at $400. There’s no travel fee in Utah County. Send the address for an exact quote.
 - q: How fast can you shoot a listing in Orem?
   a: Send the address and your listing date, and we’ll confirm a time within 24 hours. Edited photos and video are delivered within 24–48 hours of the shoot.
+- q: Do you offer drone photography in Orem?
+  a: Yes. Drone aerials are included in Full Listing Media, starting at $400, and every flight is flown by an FAA Part 107 licensed pilot through our sister company, 801 Aerial.
+- q: Do you offer social media management for Orem real estate agents?
+  a: Yes. For $1,000 per month we run your Instagram and Facebook with 3 feed posts and 2 Stories every week, using the photos and reels from every listing we shoot in Orem and across Utah County.
 ---
 Orem is full of family homes with big yards, mature trees, and clear views of Mount Timpanogos. We make sure buyers see all of it: bright interiors, a strong curb shot, and aerials that show the yard, the street, and nearby parks and schools.
 

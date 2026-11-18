@@ -4,8 +4,8 @@ permalink: /services/social-media-management/
 order: 4
 nav_title: Social media management
 short: Weekly posts, reels, captions, and replies, handled for you.
-title: Social Media Management for Real Estate Agents and Builders in Utah
-description: Social media management for Utah real estate agents, brokerages, and home builders. Weekly posts and reels, captions, a content calendar, comment replies, and a monthly content day.
+title: Social Media Management for Real Estate Agents in Utah
+description: Social media management for Utah real estate agents and builders, $1,000 per month. Weekly posts and reels from your listings, captions, a content calendar, and comment replies.
 h1: Social media management for real estate
 lede: We run your page so you can focus on clients.
 hero: /videos/reels/02-detached-garage-reel-peoa.jpg
@@ -41,4 +41,30 @@ faq:
 ---
 Most agents know they should post more. Few have time. We handle the whole thing: we plan the calendar, film and edit the content, write the captions, post on schedule, and reply to comments and messages.
 
-Every listing we shoot turns into posts and reels automatically, and a monthly content day covers everything else, like behind-the-scenes, past sales, team intros, and client stories, so your page never goes quiet between listings.
+## What's included
+
+Social media management for agents is $1,000 per month and includes:
+
+- 3 feed posts and 2 Stories every week
+- Editing, captions, and a content calendar
+- Comment and message replies
+- Reels from every listing we shoot
+- A monthly content day for posts beyond listings
+
+## Why listing media and social media work better together
+
+Most agents pay for listing photos that only end up on the MLS. When the same team shoots your listings and runs your social media, every home you sell turns into posts and reels automatically. There's no hunting for files, no second vendor, and no week where your page goes quiet because you were busy closing.
+
+The monthly content day covers everything else: behind-the-scenes, just-sold posts, past projects, team intros, and client stories, so your page shows people why they should work with you, not just what you're selling.
+
+## What we post
+
+A good real estate page mixes listings with personality. A typical month includes new listing reels and photo carousels, just-sold posts, a few posts about your area, a client story or testimonial, and behind-the-scenes of your day. We focus on Instagram and Facebook.
+
+## You stay in control
+
+We work through Meta Business Suite access, which you can remove at any time, so you never have to share your password. You stay the owner of your accounts.
+
+## Who it's for
+
+Our social media management is built for busy real estate agents, small teams, brokerages, and home builders across Utah County, Salt Lake, and the Wasatch Front, especially agents who sell a lot of homes but don't have time to keep their page active. Pair it with our [real estate photography](/services/real-estate-photography/) and [video tours and reels](/services/real-estate-video/) so every listing becomes content.

@@ -4,8 +4,8 @@ permalink: /services/real-estate-photography/
 order: 1
 nav_title: Real estate photography
 short: Bright, MLS-ready interior and exterior photos.
-title: Real Estate Photography in Utah
-description: Professional real estate photography in Utah. Bright, true-to-color interior and exterior listing photos, MLS-ready and delivered in 24–48 hours. Serving Salt Lake, Utah County, Davis, and Weber.
+title: Real Estate Photography in Utah County, Salt Lake & Park City
+description: Real estate photography in Utah County, Salt Lake, and Park City. 25 to 40 bright, true-to-color listing photos from $250, delivered in 24 to 48 hours. Based in Pleasant Grove.
 h1: Real estate photography in Utah
 lede: Bright, true-to-color listing photos that make buyers want to book a showing.
 hero: /portfolio/interiors/01-open-kitchen-island-utah.jpg
@@ -41,8 +41,28 @@ faq:
 ---
 Buyers decide whether to see a home in the first few photos. Our real estate photography is built for that moment: bright rooms, true colors, straight lines, and windows you can actually see through.
 
-Every shoot covers the rooms buyers care about most, including the kitchen, main living areas, primary suite, bathrooms, and the curb view, plus the details that set your listing apart. Photos are edited one by one and delivered sized for the MLS, Zillow, your website, and print.
+## What's included in a listing shoot
 
-We shoot homes of every size, from starter townhomes to custom builds and Parade of Homes entries, across Utah County, Salt Lake County, Davis County, Weber County, and beyond.
+Every shoot covers the rooms buyers care about most, including the kitchen, main living areas, primary suite, bathrooms, and the curb view, plus the details that set your listing apart. You get 25 to 40 edited photos, sized for the MLS, Zillow, your website, and print, and delivered within 24 to 48 hours. Listing photos start at $250.
+
+Need more than photos? Our Full Listing Media package adds [drone aerials](/services/drone-photography/), a cinematic [video tour, and a vertical reel](/services/real-estate-video/) from the same visit, starting at $400.
+
+## How we photograph a home
+
+We shoot every room with bracketed exposures and blend them by hand, so rooms look bright and natural and the view outside the window still shows up. We keep vertical lines straight and use wide but honest angles, so rooms don't look stretched and buyers aren't surprised at the showing.
+
+Exteriors are timed for the best light on the front of the home, and we photograph the features that set the listing apart: kitchens, fireplaces, home theaters, sport courts, backyards, and views.
+
+## Homes we photograph
+
+We shoot homes of every size, from starter townhomes and condos to custom builds and Parade of Homes entries. We also work with home builders who need consistent photos across a whole community, and with owners and managers of [vacation rentals](/services/vacation-rental-photography/).
+
+## Real estate photography across Utah County and beyond
+
+We're based in Pleasant Grove, so Utah County listings are our home turf, with no travel fee anywhere in the county. We regularly shoot [real estate photography in Provo](/real-estate-photography/provo/), [Orem](/real-estate-photography/orem/), [Lehi](/real-estate-photography/lehi/), [American Fork](/real-estate-photography/american-fork/), [Saratoga Springs](/real-estate-photography/saratoga-springs/), [Pleasant Grove](/real-estate-photography/pleasant-grove/), and [Alpine](/real-estate-photography/alpine/), and we travel to [Salt Lake City](/real-estate-photography/salt-lake-city/), [Draper](/real-estate-photography/draper/), [Farmington](/real-estate-photography/farmington/), [Ogden](/real-estate-photography/ogden/), [Ogden Valley](/real-estate-photography/ogden-valley/), and [Park City](/real-estate-photography/park-city/).
+
+## Booking a shoot
+
+Send the address and your listing date, and we'll confirm a time within 24 hours. Before the shoot, turn on every light, open the blinds, clear the counters, and move cars out of the driveway. We'll send a full prep checklist when you book.
 
 Wondering about cost? Read our guide to [real estate photography prices in Utah](/real-estate-photography-cost-utah/).
