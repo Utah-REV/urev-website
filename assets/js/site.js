@@ -273,6 +273,7 @@
         .then(function (r) {
           if (!r.ok) throw new Error();
           if (window.gtag) gtag('event', 'generate_lead', { service: data.get('service') || '', campaign: utm.utm_campaign || '', ad: utm.utm_content || '' });
+          if (window.fbq) fbq('track', 'Lead', { content_name: data.get('service') || '' });
           form.reset(); status.textContent = 'Request sent. We\'ll confirm your shoot within 24 hours.';
         })
         .catch(function () { status.textContent = 'That didn\'t send. Email ' + form.getAttribute('data-email') + ' and we\'ll get you booked.'; })
