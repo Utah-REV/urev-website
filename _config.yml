@@ -26,7 +26,7 @@ formspree_id: "mqpewlaa"
 
 # Google: paste these in when you set them up (step 7)
 google_analytics_id: "G-MR21PPFYMV"          # e.g. "G-XXXXXXXXXX"
-meta_pixel_id: ""                         # Meta Pixel / dataset ID
+meta_pixel_id: "1809240426970449"                         # Meta Pixel / dataset ID
 google_site_verification: ""     # the content="..." code from Search Console
 
 # Order of photo filter buttons and gallery (folders not listed go last)
