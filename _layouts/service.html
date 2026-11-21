@@ -19,6 +19,7 @@ layout: inner
 <section class="split" aria-label="About this service">
   <div class="prose">{{ content }}</div>
   <aside class="side-card">
+    {% if page.offer %}<p class="side-offer">{{ page.offer }}</p>{% endif %}
     <h2 class="side-h">What you get</h2>
     <ul class="ticks">{% for x in page.included %}<li>{{ x }}</li>{% endfor %}</ul>
     {% if price %}

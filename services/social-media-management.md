@@ -7,7 +7,8 @@ short: Weekly posts, reels, captions, and replies, handled for you.
 title: Social Media Management for Real Estate Agents in Utah
 description: Social media management for Utah real estate agents and builders, $1,000 per month. Weekly posts and reels from your listings, captions, a content calendar, and comment replies.
 h1: Social media management for real estate
-lede: We run your page so you can focus on clients.
+lede: We run your page so you can focus on clients. Try your first week free.
+offer: "First week free: 3 feed posts and 2 Stories from your current listing photos, written and posted for you. No contract."
 hero: /videos/reels/02-detached-garage-reel-peoa.jpg
 included:
 - 3 feed posts and 2 Stories every week
@@ -24,6 +25,8 @@ reels:
 - /videos/reels/09-custom-garage-reel-kaysville.mp4
 media_title: Reels we’ve made for clients
 faq:
+- q: Can I try it before I commit?
+  a: Yes. Your first week of social media management is free. We post 3 feed posts and 2 Stories using photos from your current listings, write the captions, and post them for you. There's no contract, and if you like it you can continue at $1,000 per month.
 - q: What happens when I don’t have a new listing?
   a: That’s what the monthly content day is for. We film behind-the-scenes, past projects, team intros, and client stories so your page stays active between listings.
 - q: Do I have to give you my password?

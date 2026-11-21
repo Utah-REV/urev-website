@@ -566,3 +566,5 @@ picture { display: contents; }
 .guide-body th, .guide-body td { text-align: left; padding: .7em .8em; border-bottom: 1px solid rgba(201,168,76,.25); vertical-align: top; }
 .guide-body th { color: var(--gold); font-weight: 600; }
 .guide-table { overflow-x: auto; }
+
+.side-offer{margin:0 0 18px;padding:12px 14px;border:1px solid var(--gold,#C9A84C);border-radius:6px;font-size:.95rem;line-height:1.45}
