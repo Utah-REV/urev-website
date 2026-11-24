@@ -2,9 +2,9 @@
 layout: watch
 permalink: /work/pole-barn-builder-intro-ad/
 title: Pole barn builder intro ad in Utah
-description: A vertical talking-head ad introducing a Utah pole barn builder, filmed on a job site.
+description: A vertical talking-head ad introducing Apex Structures, a Utah pole barn builder, filmed on a job site.
 h1: Pole barn builder intro ad in Utah
-lede: Social media ad by Utah Real Estate Visuals.
+lede: Social media ad for Apex Structures by Utah Real Estate Visuals.
 hero: /videos/reels/10-pole-barn-builder-intro-ad-utah.jpg
 video: /videos/reels/10-pole-barn-builder-intro-ad-utah.mp4
 vertical: true

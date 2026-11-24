@@ -12,6 +12,14 @@ layout: null
 {%- assign photos = files | where_exp: "f", "f.path contains '/portfolio/'" -%}
 {%- assign tours = files | where_exp: "f", "f.path contains '/videos/tours/'" | where: "extname", ".mp4" -%}
 {%- assign reels = files | where_exp: "f", "f.path contains '/videos/reels/'" | where: "extname", ".mp4" -%}
+{%- comment -%} Put files listed in _data/media_order.yml first, in that order; unlisted files follow. {%- endcomment -%}
+{%- assign mo = site.data.media_order -%}
+{%- assign mix = "" | split: "" -%}{%- for p in mo.photos -%}{%- assign m = photos | where: "path", p | first -%}{%- if m -%}{%- assign mix = mix | push: m -%}{%- endif -%}{%- endfor -%}
+{%- for f in photos -%}{%- unless mo.photos contains f.path -%}{%- assign mix = mix | push: f -%}{%- endunless -%}{%- endfor -%}{%- assign photos_mixed = mix -%}
+{%- assign mix = "" | split: "" -%}{%- for p in mo.tours -%}{%- assign m = tours | where: "path", p | first -%}{%- if m -%}{%- assign mix = mix | push: m -%}{%- endif -%}{%- endfor -%}
+{%- for f in tours -%}{%- unless mo.tours contains f.path -%}{%- assign mix = mix | push: f -%}{%- endunless -%}{%- endfor -%}{%- assign tours = mix -%}
+{%- assign mix = "" | split: "" -%}{%- for p in mo.reels -%}{%- assign m = reels | where: "path", p | first -%}{%- if m -%}{%- assign mix = mix | push: m -%}{%- endif -%}{%- endfor -%}
+{%- for f in reels -%}{%- unless mo.reels contains f.path -%}{%- assign mix = mix | push: f -%}{%- endunless -%}{%- endfor -%}{%- assign reels = mix -%}
 {%- assign og = nil -%}{%- assign cats = "" -%}{%- assign photo_count = 0 -%}
 {%- for f in photos -%}
   {%- assign ext = f.extname | downcase | remove: "." -%}
@@ -126,11 +134,11 @@ layout: null
 
     {% if photo_count > 0 %}
     <div class="gallery">
-      {% for gc in cat_list %}{% for f in photos %}
+      {% for f in photos_mixed %}
         {%- assign ext = f.extname | downcase | remove: "." -%}
         {%- unless img_exts contains ext -%}{%- continue -%}{%- endunless -%}
         {%- assign parts = f.path | split: "/" -%}{%- if parts.size > 3 -%}{%- assign cat = parts[2] | downcase -%}{%- else -%}{%- assign cat = "more" -%}{%- endif -%}
-        {%- if cat != gc -%}{%- continue -%}{%- endif -%}
+        {%- unless cat_list contains cat -%}{%- continue -%}{%- endunless -%}
         {%- assign label = f.basename | split: "-" -%}{%- assign first_word = label | first -%}
         {%- assign size_t = first_word | plus: 0 -%}
         {%- if size_t > 0 or first_word == "00" -%}{%- assign label = label | shift -%}{%- endif -%}
@@ -142,7 +150,7 @@ layout: null
             <span class="tile-cap" aria-hidden="true">{{ label | remove: ", Utah" | remove: ", Utah County" }}</span>
           </button>
         </figure>
-      {% endfor %}{% endfor %}
+      {% endfor %}
     </div>
     <button type="button" class="btn btn--line more-btn" hidden>Show all photos</button>
     {% endif %}

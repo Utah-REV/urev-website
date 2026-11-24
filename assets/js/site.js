@@ -147,24 +147,7 @@
   // Portfolio: show the first 12 photos, then a "Show all" button
   var gallery = $('.gallery'), moreBtn = $('.more-btn'), LIMIT = window.innerWidth <= 820 ? 8 : 12;
 
-  // Mix categories so the "All" view alternates between shoots instead of
-  // running one property at a time: each folder's photos are spread evenly.
-  if (gallery) {
-    var groups = {};
-    $$('.tile', gallery).forEach(function (t) { var c = t.getAttribute('data-cat'); (groups[c] = groups[c] || []).push(t); });
-    // Always take from the folder with the most photos left, never the same folder twice in a row
-    var cats = Object.keys(groups), last = null, out = [];
-    for (;;) {
-      var pick = null;
-      cats.forEach(function (c) {
-        if (!groups[c].length || c === last) return;
-        if (!pick || groups[c].length > groups[pick].length) pick = c;
-      });
-      if (!pick) { pick = cats.filter(function (c) { return groups[c].length; })[0]; if (!pick) break; }
-      out.push(groups[pick].shift()); last = pick;
-    }
-    out.forEach(function (t) { gallery.appendChild(t); });
-  }
+  // Photo order comes from _data/media_order.yml (mixed by hand so shoots don't clump).
   var tiles = $$('.tile');
   function applyLimit() {
     var shown = 0;

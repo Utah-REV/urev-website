@@ -4,15 +4,15 @@ published: false
 layout: service
 permalink: /work/apex-properties/
 order: 99
-nav_title: Apex Properties case study
-short: How UREV handles listing media and social media for Apex Properties.
-title: Apex Properties Case Study | Listing Media and Social Media Management
-description: How Utah Real Estate Visuals shoots listing photos, video, and drone for Apex Properties and turns every listing into a month of social media content.
-h1: Apex Properties case study
+nav_title: Apex Structures case study
+short: How UREV handles listing media and social media for Apex Structures.
+title: Apex Structures Case Study | Listing Media and Social Media Management
+description: How Utah Real Estate Visuals shoots listing photos, video, and drone for Apex Structures and turns every listing into a month of social media content.
+h1: Apex Structures case study
 lede: One team for listing photos, video, drone, and social media.
 hero: /portfolio/featured/white-colonial-custom-home-utah.jpg
 ---
-[One or two sentences about Apex Properties: who they are, where they work, and what they sell.]
+[One or two sentences about Apex Structures: who they are, where they work, and what they sell.]
 
 ## The problem
 
@@ -32,7 +32,7 @@ Every month, UREV handles Apex's listing media and social media together:
 [Real numbers only, once Apex approves sharing them. For example: follower growth, reach, inquiries from social media, time saved, or how fast listings went live.]
 
 > "[A short quote from Apex about working with UREV.]"
-> [Name, title, Apex Properties]
+> [Name, title, Apex Structures]
 
 ## Want the same for your listings?
 

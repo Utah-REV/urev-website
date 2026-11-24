@@ -1,0 +1,57 @@
+# Display order for the homepage gallery, video tours, and reels.
+# Listed files show first, in this order, so different shoots and categories stay mixed.
+# Anything new that isn't listed still shows automatically, after these.
+photos:
+- /portfolio/exteriors/02-parade-of-homes-winner-alpine-utah.jpg
+- /portfolio/interiors/01-open-kitchen-island-utah.jpg
+- /portfolio/aerial/05-mountain-bench-aerial-spanish-fork-utah.jpg
+- /portfolio/interiors/02-great-room-living-area-utah.jpg
+- /portfolio/exteriors/01-stone-custom-home-exterior-alpine-utah.jpg
+- /portfolio/land/05-hillside-lot-property-lines-spanish-fork-utah.jpg
+- /portfolio/interiors/04-walnut-kitchen-island-utah.jpg
+- /portfolio/aerial/01-luxury-home-aerial-alpine-utah.jpg
+- /portfolio/interiors/05-living-room-fireplace-utah.jpg
+- /portfolio/land/01-residential-lot-aerial-utah-county.jpg
+- /portfolio/interiors/07-primary-bedroom-fireplace-utah.jpg
+- /portfolio/exteriors/00-white-colonial-custom-home-exterior-utah.jpg
+- /portfolio/aerial/04-hillside-neighborhood-aerial-spanish-fork-utah.jpg
+- /portfolio/interiors/08-primary-bathroom-soaking-tub-utah.jpg
+- /portfolio/aerial/02-pool-backyard-top-down-alpine-utah.jpg
+- /portfolio/interiors/03-formal-dining-room-utah.jpg
+- /portfolio/land/06-view-lot-property-lines-spanish-fork-utah.jpg
+- /portfolio/interiors/12-home-theater-utah.jpg
+- /portfolio/land/02-subdivision-lot-aerial-utah.jpg
+- /portfolio/interiors/06-breakfast-nook-utah.jpg
+- /portfolio/aerial/06-valley-view-aerial-spanish-fork-utah.jpg
+- /portfolio/interiors/09-family-room-utah.jpg
+- /portfolio/aerial/03-new-construction-aerial-lehi-utah.jpg
+- /portfolio/interiors/13-indoor-sport-court-utah.jpg
+- /portfolio/land/07-lot-boundary-top-down-spanish-fork-utah.jpg
+- /portfolio/interiors/10-bedroom-sitting-area-utah.jpg
+- /portfolio/land/03-hillside-lot-utah.jpg
+- /portfolio/interiors/11-powder-room-utah.jpg
+- /portfolio/land/04-neighborhood-aerial-sandy-utah.jpg
+- /portfolio/interiors/14-guest-bathroom-utah.jpg
+- /portfolio/land/08-lot-property-lines-wide-spanish-fork-utah.jpg
+tours:
+- /videos/tours/01-custom-home-tour-alpine-utah.mp4
+- /videos/tours/05-hillside-lot-aerial-spanish-fork-utah.mp4
+- /videos/tours/02-barn-estate-tour-farmington-utah.mp4
+- /videos/tours/04-land-acreage-tour-indianola-utah.mp4
+- /videos/tours/03-detached-garage-tour-utah.mp4
+reels:
+- /videos/reels/01-parade-of-homes-reel-alpine.mp4
+- /videos/reels/10-pole-barn-builder-intro-ad-utah.mp4
+- /videos/reels/02-detached-garage-reel-peoa.mp4
+- /videos/reels/13-pole-barn-builder-myths-ad-utah.mp4
+- /videos/reels/03-custom-garage-reel-heber-city.mp4
+- /videos/reels/14-pole-barn-builder-faq-ad-utah.mp4
+- /videos/reels/04-mountain-shop-reel-huntsville.mp4
+- /videos/reels/11-pole-barn-builder-services-ad-utah.mp4
+- /videos/reels/05-custom-garage-reel-bountiful.mp4
+- /videos/reels/12-pole-barn-builder-crew-ad-utah.mp4
+- /videos/reels/06-new-garage-reel-ogden.mp4
+- /videos/reels/15-pole-barn-builder-contractor-tips-ad-utah.mp4
+- /videos/reels/07-custom-shop-reel-west-haven.mp4
+- /videos/reels/08-twin-garages-reel-clinton.mp4
+- /videos/reels/09-custom-garage-reel-kaysville.mp4

@@ -2,9 +2,9 @@
 layout: watch
 permalink: /work/pole-barn-builder-services-ad/
 title: Pole barn builder services ad in Utah
-description: A vertical talking-head ad showing the garages, commercial buildings, and construction a Utah pole barn builder offers.
+description: A vertical talking-head ad showing the garages, commercial buildings, and construction Apex Structures, a Utah pole barn builder offers.
 h1: Pole barn builder services ad in Utah
-lede: Social media ad by Utah Real Estate Visuals.
+lede: Social media ad for Apex Structures by Utah Real Estate Visuals.
 hero: /videos/reels/11-pole-barn-builder-services-ad-utah.jpg
 video: /videos/reels/11-pole-barn-builder-services-ad-utah.mp4
 vertical: true

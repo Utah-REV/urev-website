@@ -2,9 +2,9 @@
 layout: watch
 permalink: /work/pole-barn-builder-crew-ad/
 title: Pole barn builder crew ad in Utah
-description: A vertical ad featuring a crew member of a Utah pole barn builder, filmed on site with construction b-roll.
+description: A vertical ad featuring a crew member of Apex Structures, a Utah pole barn builder, filmed on site with construction b-roll.
 h1: Pole barn builder crew ad in Utah
-lede: Social media ad by Utah Real Estate Visuals.
+lede: Social media ad for Apex Structures by Utah Real Estate Visuals.
 hero: /videos/reels/12-pole-barn-builder-crew-ad-utah.jpg
 video: /videos/reels/12-pole-barn-builder-crew-ad-utah.mp4
 vertical: true

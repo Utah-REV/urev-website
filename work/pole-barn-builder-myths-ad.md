@@ -4,7 +4,7 @@ permalink: /work/pole-barn-builder-myths-ad/
 title: Pole barn myths ad for a Utah builder
 description: A vertical talking-head ad answering common pole barn myths about permits and engineering for a Utah builder.
 h1: Pole barn myths ad for a Utah builder
-lede: Social media ad by Utah Real Estate Visuals.
+lede: Social media ad for Apex Structures by Utah Real Estate Visuals.
 hero: /videos/reels/13-pole-barn-builder-myths-ad-utah.jpg
 video: /videos/reels/13-pole-barn-builder-myths-ad-utah.mp4
 vertical: true
