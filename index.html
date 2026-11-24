@@ -178,7 +178,7 @@ layout: null
         <button type="button" class="vid vid--tall" data-video="{{ v.path | relative_url }}" aria-label="Play reel: {{ out }}">
           <picture><source srcset="{{ poster | replace: '.jpg', '.webp' | relative_url }}" type="image/webp"><img src="{{ poster | relative_url }}" alt="" loading="lazy" decoding="async"></picture>
           <span class="vid-play" aria-hidden="true"></span>
-          <span class="vid-label">{{ out | remove: "Reel " }}</span>
+          <span class="vid-label">{{ out | remove: "Reel " | replace: "Faq", "FAQ" | replace: " Ad Utah", " Ad" }}</span>
         </button>
       {% endfor %}
     </div>

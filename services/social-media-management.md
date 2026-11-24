@@ -18,12 +18,18 @@ included:
 - Reels from every listing we shoot
 price_name: Social Media Management
 reels:
+- /videos/reels/10-pole-barn-builder-intro-ad-utah.mp4
+- /videos/reels/14-pole-barn-builder-faq-ad-utah.mp4
+- /videos/reels/13-pole-barn-builder-myths-ad-utah.mp4
+- /videos/reels/11-pole-barn-builder-services-ad-utah.mp4
+- /videos/reels/12-pole-barn-builder-crew-ad-utah.mp4
+- /videos/reels/15-pole-barn-builder-contractor-tips-ad-utah.mp4
 - /videos/reels/03-custom-garage-reel-heber-city.mp4
 - /videos/reels/04-mountain-shop-reel-huntsville.mp4
 - /videos/reels/07-custom-shop-reel-west-haven.mp4
 - /videos/reels/08-twin-garages-reel-clinton.mp4
 - /videos/reels/09-custom-garage-reel-kaysville.mp4
-media_title: Reels we’ve made for clients
+media_title: Ads and reels we’ve made for clients
 faq:
 - q: Can I try it before I commit?
   a: Yes. Your first week of social media management is free. We post 3 feed posts and 2 Stories using photos from your current listings, write the captions, and post them for you. There's no contract, and if you like it you can continue at $1,000 per month.
@@ -63,6 +69,10 @@ The monthly content day covers everything else: behind-the-scenes, just-sold pos
 ## What we post
 
 A good real estate page mixes listings with personality. A typical month includes new listing reels and photo carousels, just-sold posts, a few posts about your area, a client story or testimonial, and behind-the-scenes of your day. We focus on Instagram and Facebook.
+
+## Talking-head ads that sound like you
+
+Some of the best-performing posts are simple: you, on camera, answering the questions clients actually ask. We script them with you, film on site, cut them vertical with captions, and post them. The ads above are a series we made for a Utah pole barn builder, covering who they are, what they build, common myths, and the questions customers ask most.
 
 ## You stay in control
 

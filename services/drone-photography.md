@@ -23,6 +23,11 @@ photos:
 - /portfolio/land/01-residential-lot-aerial-utah-county.jpg
 - /portfolio/land/02-subdivision-lot-aerial-utah.jpg
 - /portfolio/land/04-neighborhood-aerial-sandy-utah.jpg
+- /portfolio/aerial/05-mountain-bench-aerial-spanish-fork-utah.jpg
+- /portfolio/land/05-hillside-lot-property-lines-spanish-fork-utah.jpg
+- /portfolio/land/07-lot-boundary-top-down-spanish-fork-utah.jpg
+videos:
+- /videos/tours/05-hillside-lot-aerial-spanish-fork-utah.mp4
 faq:
 - q: Is your drone pilot licensed?
   a: Yes. Every flight is flown by an FAA Part 107 licensed pilot through our sister company, 801 Aerial, which the FAA requires for any commercial drone work, including real estate.
